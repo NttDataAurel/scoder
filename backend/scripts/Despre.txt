@@ -1,0 +1,36 @@
+   S-Coder (Skilled Coder)
+
+1. Descriere 
+
+ Procesul de angajare presupune adaugarea detaliilor unui candidat in sistemul S-Coder (nume, prenume, adresa, telefon, email, fisier cv) 
+ si  parcurgerea a trei sub-interviuri sau faze. 
+ Prima faza este cea care implica interviul dintre departamentul de resurse umane si candidat. Rezultatul este respins/acceptat.
+ A doua faza este cea a interviului tehnic in urma caruia rezulta matricea de competente. 
+ A treia faza este cea a intalnirii dintre candidat si clientul final. Rezultatul este respins/acceptat.
+ Aplicatia va gestiona toate cele mentionate mai sus (adaugare, listare, editare).
+
+2. Detalii tehnice
+ Aplicatia este de tip client - server formata din trei elemente principale: frontend, backend si baza de date.
+ 
+ Frontend-ul si backend-ul ruleaza in Glassfish 4.1.2 (GF) ca entitati separate. Pentru moment in doua domenii ale aceleiasi instante GF.
+ Frontend-ul si backend-ul comunica prin apeluri REST. 
+ Frontend-ul contine pagini JSF si beanuri JSF. 
+ Backend-ul contine servicii REST, DTO, EJB si entitati JPA. 
+ 
+ 
+3. Scripturi
+ - setupMysql.bat + mysqlCreateUser.sql +  mysqlSetupDb.sql
+      - creeaza userul scoder si baza de date scoderdb.
+	  
+ - createDomains.bat + mysql-connector-java-8.0.11.jar 
+      - creeaza cele doua domenii (scoder-back si scoder-front)
+	  
+ - startBack.bat  - porneste domeniul backend
+ - stopBack.bat   - opreste domeniul backend
+ - startFront.bat - porneste domeniul frontend
+ - stopFront.bat  - opreste domeniul frontend
+ 
+ 
+ 
+ 
+ 
