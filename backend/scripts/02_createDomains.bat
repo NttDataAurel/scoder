@@ -20,7 +20,8 @@ echo Creating %BACK_DOMAIN%
 @call %GF_DIR%\bin\asadmin.bat create-domain --portbase %BACK_PORTBASE% %BACK_DOMAIN%
 xcopy mysql-connector-java-8.0.11.jar  %GF_DIR%\glassfish\domains\%BACK_DOMAIN%\lib\ext\
 if not exist %GF_DIR%\glassfish\domains\%BACK_DOMAIN%\lib\ext\mysql-connector-java*.jar (
-    echo "   Error. Mysql connector has to be copied to %BACK_DOMAIN%\lib\ext\"
+    echo "   Error. Cannot find mysqlconnector. Mysql connector has to be copied to %BACK_DOMAIN%\lib\ext\"
+	pause
 	exit /b
 )
 
