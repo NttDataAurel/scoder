@@ -8,21 +8,25 @@
     </h:head>
     <h:body>
         AppConfig list
-        
-        <h:dataTable value="#{appConfigMBean.appConfigs}"  var="appconfig"  rowClasses="rowOdd,rowEven">
-            <h:column>
-                <f:facet name="header">Id</f:facet>
-                <h:outputText value="#{appconfig.id}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Key</f:facet>
-                <h:outputText value="#{appconfig.key}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Value</f:facet>
-                <h:outputText value="#{appconfig.value}"/>
-            </h:column>
-        </h:dataTable>
+        <br/>
+        <f:view>
+            <h:form>
+                <h:dataTable value="#{appConfigMBean.appConfigs}"  var="appconfig"  rowClasses="rowOdd,rowEven">
+                    <h:column>
+                        <f:facet name="header">Id</f:facet>
+                        <h:outputText value="#{appconfig.id}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Key</f:facet>
+                        <h:outputText value="#{appconfig.key}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Value</f:facet>
+                        <h:outputText value="#{appconfig.value}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view> 
     </h:body>
 </html>
 
