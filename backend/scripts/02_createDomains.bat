@@ -14,6 +14,20 @@ set MYSQL_PASS=scoderPass
 set MYSQL_DB=scoderdb
 
 @echo on
+xcopy org.eclipse.persistence.moxy-2.6.1.jar %GF_DIR%\glassfish\modules\
+if not exist %GF_DIR%\glassfish\modules\org.eclipse.persistence.moxy-2.6.1.jar (
+    echo "   Error. Cannot copy eclipse moxy jar. Eclipse moxy has to be copied to %GF_DIR%\glassfish\modules\"
+	pause
+	exit /b
+)
+
+rm %GF_DIR%\glassfish\modules\org.eclipse.persistence.moxy.jar
+if exist %GF_DIR%\glassfish\modules\org.eclipse.persistence.moxy.jar (
+    echo "   Error. org.eclipse.persistence.moxy.jar needs to be deleted from %GF_DIR%\glassfish\modules\"
+	pause
+	exit /b
+)
+
 echo Creating %FRONT_DOMAIN%
 @call %GF_DIR%\bin\asadmin.bat create-domain --portbase %FRONT_PORTBASE% %FRONT_DOMAIN%
 echo Creating %BACK_DOMAIN%
