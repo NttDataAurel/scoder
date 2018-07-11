@@ -12,26 +12,25 @@ import javax.persistence.Table;
 @NamedQueries({
         @NamedQuery(name = UserPhaseResultEntity.FIND_ALL, query = "SELECT e FROM UserPhaseResultEntity e"),
         @NamedQuery(name = UserPhaseResultEntity.FIND_BY_ID, query = "SELECT e FROM UserPhaseResultEntity e WHERE e.id=:"+ AbstractBean.ID_PARAM),
-        @NamedQuery(name = UserPhaseResultEntity.FIND_BY_DATE, query ="SELECT e FROM UserPhaseResultEntity e WHERE e._date=:"+UserPhaseResultEntity.DATE_PARAM),
-        @NamedQuery(name = UserPhaseResultEntity.FIND_BY_USER_ID, query="SELECT e FROM UserPhaseResultEntity e WHERE e.user_id=:"+UserPhaseResultEntity.USER_ID_PARAM),
-        @NamedQuery(name = UserPhaseResultEntity.FIND_BY_PHASE_ID, query="SELECT e FROM UserPhaseResultEntity e WHERE e.phase_id=:"+UserPhaseResultEntity.PHASE_ID_PARAM),
+        @NamedQuery(name = UserPhaseResultEntity.FIND_BY_DATE, query ="SELECT e FROM UserPhaseResultEntity e WHERE e.date=:"+UserPhaseResultEntity.DATE_PARAM),
+        @NamedQuery(name = UserPhaseResultEntity.FIND_BY_USER_ID, query="SELECT e FROM UserPhaseResultEntity e WHERE e.userId=:"+UserPhaseResultEntity.USER_ID_PARAM),
+        @NamedQuery(name = UserPhaseResultEntity.FIND_BY_PHASE_ID, query="SELECT e FROM UserPhaseResultEntity e WHERE e.phaseId=:"+UserPhaseResultEntity.PHASE_ID_PARAM),
         @NamedQuery(name = UserPhaseResultEntity.FIND_BY_RANKING, query="SELECT e FROM UserPhaseResultEntity e WHERE e.ranking>:"+UserPhaseResultEntity.RANKING_PARAM),
-        @NamedQuery(name = UserPhaseResultEntity.FIND_BY_PASSED, query="SELECT e FROM UserPhaseResultEntity e WHERE e.passed=:"+UserPhaseResultEntity.PASSED_PARAM),
-        @NamedQuery(name = UserPhaseResultEntity.FILTER_BY_KEY, query = "SELECT e FROM UserPhaseResultEntity e WHERE e.key like :"+ UserPhaseResultEntity.FILTER_BY_KEY_PARAM)
+        @NamedQuery(name = UserPhaseResultEntity.FIND_BY_PASSED, query="SELECT e FROM UserPhaseResultEntity e WHERE e.passed=:"+UserPhaseResultEntity.PASSED_PARAM)
 })
 
 public class UserPhaseResultEntity extends AbstractEntity implements Serializable {
     private static final long serialVersionUID = 118334295272084434L;
     
-    public static final String FIND_ALL = "FIND_ALL_JPQL";
-    public static final String FIND_BY_ID = "FIND_BY_ID_JPQL";
-    public static final String FIND_BY_DATE="FIND_BY_DATE_JPQL";
-    public static final String FIND_BY_USER_ID="FIND_BY_USER_ID_JPQL";
-    public static final String FIND_BY_PHASE_ID="FIND_BY_PHASE_ID_JPQL";
-    public static final String FIND_BY_RANKING="FIND_BY_RANKING_JPQL";
-    public static final String FIND_BY_PASSED="FIND_BY_PASSED_JPQL";
+    public static final String FIND_ALL = "USER_PHASE_RESULT_FIND_ALL_JPQL";
+    public static final String FIND_BY_ID = "USER_PHASE_RESULT_FIND_BY_ID_JPQL";
+    public static final String FIND_BY_DATE="USER_PHASE_RESULT_FIND_BY_DATE_JPQL";
+    public static final String FIND_BY_USER_ID="USER_PHASE_RESULT_FIND_BY_USER_ID_JPQL";
+    public static final String FIND_BY_PHASE_ID="USER_PHASE_RESULT_FIND_BY_PHASE_ID_JPQL";
+    public static final String FIND_BY_RANKING="USER_PHASE_RESULT_FIND_BY_RANKING_JPQL";
+    public static final String FIND_BY_PASSED="USER_PHASE_RESULT_FIND_BY_PASSED_JPQL";
     public static final String TBL_USER_PHASE_RES = "user_phase_result";
-    public static final String FILTER_BY_KEY = "FILTER_BY_KEY";
+    public static final String FILTER_BY_KEY = "USER_PHASE_RESULT_FILTER_BY_KEY";
     public static final String FILTER_BY_KEY_PARAM = "key_param";
     public static final String DATE_PARAM = "date_param";
     public static final String USER_ID_PARAM = "user_id_param";

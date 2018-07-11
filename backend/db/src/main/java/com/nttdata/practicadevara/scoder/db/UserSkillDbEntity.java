@@ -19,14 +19,14 @@ import javax.persistence.Table;
 public class UserSkillDbEntity extends AbstractEntity implements Serializable {
     private static final long serialVersionUID = 117223295272084434L;
     
-    public static final String FIND_ALL = "FIND_ALL_JPQL";
-    public static final String FIND_BY_ID = "FIND_BY_ID_JPQL";
+    public static final String FIND_ALL = "USER_SKILL_FIND_ALL_JPQL";
+    public static final String FIND_BY_ID = "USER_SKILL_FIND_BY_ID_JPQL";
     public static final String TBL_APP_CONFIG = "app_config";
-    public static final String FILTER_BY_USER_ID = "FILTER_BY_USER_ID";
+    public static final String FILTER_BY_USER_ID = "USER_SKILL_FILTER_BY_USER_ID";
     public static final String FILTER_BY_USER_ID_PARAM = "user_id_param";
-    public static final String FILTER_BY_PHASE_ID = "FILTER_BY_PHASE_ID";
+    public static final String FILTER_BY_PHASE_ID = "USER_SKILL_FILTER_BY_PHASE_ID";
     public static final String FILTER_BY_PHASE_ID_PARAM = "phase_id_param";
-    public static final String FILTER_BY_NAME = "FILTER_BY_NAME";
+    public static final String FILTER_BY_NAME = "USER_SKILL_FILTER_BY_NAME";
     public static final String FILTER_BY_NAME_PARAM = "name_param";
     
     @Column(name = "USER_ID")
