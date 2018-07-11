@@ -8,7 +8,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = UserSkillDbEntity.TBL_APP_CONFIG, schema = AbstractBean.SCHEMA_NAME)
+@Table(name = UserSkillDbEntity.TBL_USER_SKILL, schema = AbstractBean.SCHEMA_NAME)
 @NamedQueries({
         @NamedQuery(name = UserSkillDbEntity.FIND_ALL, query = "SELECT e FROM UserSkillDbEntity e"),
         @NamedQuery(name = UserSkillDbEntity.FIND_BY_ID, query = "SELECT e FROM UserSkillDbEntity e WHERE e.id=:"+ AbstractBean.ID_PARAM),
@@ -21,7 +21,7 @@ public class UserSkillDbEntity extends AbstractEntity implements Serializable {
     
     public static final String FIND_ALL = "USER_SKILL_FIND_ALL_JPQL";
     public static final String FIND_BY_ID = "USER_SKILL_FIND_BY_ID_JPQL";
-    public static final String TBL_APP_CONFIG = "app_config";
+    public static final String TBL_USER_SKILL = "user_skill";
     public static final String FILTER_BY_USER_ID = "USER_SKILL_FILTER_BY_USER_ID";
     public static final String FILTER_BY_USER_ID_PARAM = "user_id_param";
     public static final String FILTER_BY_PHASE_ID = "USER_SKILL_FILTER_BY_PHASE_ID";
@@ -41,7 +41,7 @@ public class UserSkillDbEntity extends AbstractEntity implements Serializable {
     @Column(name = "LEVEL")
     private Long level;
     
-    @Column(name = "Comments")
+    @Column(name = "COMMENTS")
     private String comments;
 
     public Long getUserId() {
