@@ -43,6 +43,13 @@ public class UserPhaseResultBean extends AbstractBean<UserPhaseResultEntity>{
                 .getResultList();
     }
     
+    public List<UserPhaseResultEntity> filterByUserId(String userId) {
+        String param = "%"+userId+"%";
+        return manager.createNamedQuery(UserPhaseResultEntity.FIND_BY_USER_ID)
+                .setParameter(UserPhaseResultEntity.USER_ID_PARAM, param)
+                .getResultList();
+    }
+    
     public List<UserPhaseResultEntity> filterByPhaseId(String phaseId) {
         String param = "%"+phaseId+"%";
         return manager.createNamedQuery(UserPhaseResultEntity.FIND_BY_PHASE_ID)
@@ -50,10 +57,15 @@ public class UserPhaseResultBean extends AbstractBean<UserPhaseResultEntity>{
                 .getResultList();
     }
     
-    public List<UserPhaseResultEntity> filterByRank(double rank) {
-    
+    public List<UserPhaseResultEntity> filterByRank(double rank) {  
         return manager.createNamedQuery(UserPhaseResultEntity.FIND_BY_RANKING)
                 .setParameter(UserPhaseResultEntity.RANKING_PARAM, rank)
+                .getResultList();
+    }
+    
+    public List<UserPhaseResultEntity> filterByPassed(boolean pass){
+        return manager.createNamedQuery(UserPhaseResultEntity.FIND_BY_PASSED)
+                .setParameter(UserPhaseResultEntity.PASSED_PARAM,pass)
                 .getResultList();
     }
     
