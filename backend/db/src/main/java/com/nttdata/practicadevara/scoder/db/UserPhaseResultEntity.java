@@ -78,7 +78,7 @@ public class UserPhaseResultEntity extends AbstractEntity implements Serializabl
     }
     
     public void setPhaseId(long phase_id){
-        this.phaseId = phaseId;
+        this.phaseId = phase_id;
     }
     
     public String getComments(){
