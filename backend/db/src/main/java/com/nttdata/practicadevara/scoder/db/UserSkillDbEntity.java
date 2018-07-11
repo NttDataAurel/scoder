@@ -30,27 +30,33 @@ public class UserSkillDbEntity extends AbstractEntity implements Serializable {
     public static final String FILTER_BY_NAME_PARAM = "name_param";
     
     @Column(name = "USER_ID")
-    private Integer user_id;
+    private Long user_id;
     
     @Column(name = "PHASE_ID")
-    private Integer phase_id;
+    private Long phase_id;
     
     @Column(name = "NAME")
     private String name;
+    
+    @Column(name = "LEVEL")
+    private Long level;
+    
+    @Column(name = "Comments")
+    private String comments;
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return user_id;
     }
 
-    public void setUserId(Integer user_id) {
+    public void setUserId(Long user_id) {
         this.user_id = user_id;
     }
 
-    public Integer getPhaseId() {
+    public Long getPhaseId() {
         return phase_id;
     }
 
-    public void setPhaseId(Integer phase_id) {
+    public void setPhaseId(Long phase_id) {
         this.phase_id = phase_id;
     }
     
@@ -60,6 +66,22 @@ public class UserSkillDbEntity extends AbstractEntity implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public Long getLevel() {
+        return level;
+    }
+
+    public void setLevel(Long level) {
+        this.level = level;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
     }
     
     @Override
