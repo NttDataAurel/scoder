@@ -10,13 +10,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = UserPhaseResultDbEntity.TBL_USER_PHASE_RESULT, schema = AbstractBean.SCHEMA_NAME)
 @NamedQueries({
-        @NamedQuery(name = UserPhaseResultDbEntity.FIND_ALL, query = "SELECT e FROM UserPhaseResultEntity e"),
-        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_ID, query = "SELECT e FROM UserPhaseResultEntity e WHERE e.id=:"+ AbstractBean.ID_PARAM),
-        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_DATE, query ="SELECT e FROM UserPhaseResultEntity e WHERE e.date=:"+UserPhaseResultDbEntity.DATE_PARAM),
-        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_USER_ID, query="SELECT e FROM UserPhaseResultEntity e WHERE e.userId=:"+UserPhaseResultDbEntity.USER_ID_PARAM),
-        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_PHASE_ID, query="SELECT e FROM UserPhaseResultEntity e WHERE e.phaseId=:"+UserPhaseResultDbEntity.PHASE_ID_PARAM),
-        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_RANKING, query="SELECT e FROM UserPhaseResultEntity e WHERE e.ranking>:"+UserPhaseResultDbEntity.RANKING_PARAM),
-        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_PASSED, query="SELECT e FROM UserPhaseResultEntity e WHERE e.passed=:"+UserPhaseResultDbEntity.PASSED_PARAM)
+        @NamedQuery(name = UserPhaseResultDbEntity.FIND_ALL, query = "SELECT e FROM UserPhaseResultDbEntity e"),
+        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_ID, query = "SELECT e FROM UserPhaseResultDbEntity e WHERE e.id=:"+ AbstractBean.ID_PARAM),
+        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_DATE, query ="SELECT e FROM UserPhaseResultDbEntity e WHERE e.date=:"+UserPhaseResultDbEntity.DATE_PARAM),
+        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_USER_ID, query="SELECT e FROM UserPhaseResultDbEntity e WHERE e.userId=:"+UserPhaseResultDbEntity.USER_ID_PARAM),
+        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_PHASE_ID, query="SELECT e FROM UserPhaseResultDbEntity e WHERE e.phaseId=:"+UserPhaseResultDbEntity.PHASE_ID_PARAM),
+        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_RANKING, query="SELECT e FROM UserPhaseResultDbEntity e WHERE e.ranking>:"+UserPhaseResultDbEntity.RANKING_PARAM),
+        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_PASSED, query="SELECT e FROM UserPhaseResultDbEntity e WHERE e.passed=:"+UserPhaseResultDbEntity.PASSED_PARAM)
 })
 
 public class UserPhaseResultDbEntity extends AbstractEntity implements Serializable {
