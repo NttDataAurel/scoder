@@ -8,7 +8,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = UserPhaseResultDbEntity.TBL_USER_PHASE_RES, schema = AbstractBean.SCHEMA_NAME)
+@Table(name = UserPhaseResultDbEntity.TBL_USER_PHASE_RESULT, schema = AbstractBean.SCHEMA_NAME)
 @NamedQueries({
         @NamedQuery(name = UserPhaseResultDbEntity.FIND_ALL, query = "SELECT e FROM UserPhaseResultEntity e"),
         @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_ID, query = "SELECT e FROM UserPhaseResultEntity e WHERE e.id=:"+ AbstractBean.ID_PARAM),
@@ -29,7 +29,7 @@ public class UserPhaseResultDbEntity extends AbstractEntity implements Serializa
     public static final String FIND_BY_PHASE_ID="USER_PHASE_RESULT_FIND_BY_PHASE_ID_JPQL";
     public static final String FIND_BY_RANKING="USER_PHASE_RESULT_FIND_BY_RANKING_JPQL";
     public static final String FIND_BY_PASSED="USER_PHASE_RESULT_FIND_BY_PASSED_JPQL";
-    public static final String TBL_USER_PHASE_RES = "user_phase_result";
+    public static final String TBL_USER_PHASE_RESULT = "user_phase_result";
     public static final String FILTER_BY_KEY = "USER_PHASE_RESULT_FILTER_BY_KEY";
     public static final String FILTER_BY_KEY_PARAM = "key_param";
     public static final String DATE_PARAM = "date_param";

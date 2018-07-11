@@ -43,14 +43,14 @@ public class UserPhaseResultDbBean extends AbstractBean<UserPhaseResultDbEntity>
                 .getResultList();
     }
     
-    public List<UserPhaseResultDbEntity> filterByUserId(String userId) {
+    public List<UserPhaseResultDbEntity> filterByUserId(Long userId) {
         String param = "%"+userId+"%";
         return manager.createNamedQuery(UserPhaseResultDbEntity.FIND_BY_USER_ID)
                 .setParameter(UserPhaseResultDbEntity.USER_ID_PARAM, param)
                 .getResultList();
     }
     
-    public List<UserPhaseResultDbEntity> filterByPhaseId(String phaseId) {
+    public List<UserPhaseResultDbEntity> filterByPhaseId(Long phaseId) {
         String param = "%"+phaseId+"%";
         return manager.createNamedQuery(UserPhaseResultDbEntity.FIND_BY_PHASE_ID)
                 .setParameter(UserPhaseResultDbEntity.PHASE_ID_PARAM, param)

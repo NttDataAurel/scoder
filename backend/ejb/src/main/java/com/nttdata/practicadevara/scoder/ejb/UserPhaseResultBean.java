@@ -24,17 +24,17 @@ public class UserPhaseResultBean {
         return toDto(entities);
     }
     
-    public List<UserPhaseResultDto> filter(String date){
+    public List<UserPhaseResultDto> findByDate(String date){
         List<UserPhaseResultDbEntity> entity = userPhaseResultDbBean.filterByDate(date);
         return toDto(entity);
     }
     
-    public List<UserPhaseResultDto> findByUserId(String userId){
+    public List<UserPhaseResultDto> findByUserId(Long userId){
         List<UserPhaseResultDbEntity> entity = userPhaseResultDbBean.filterByUserId(userId);
         return toDto(entity);
     }
     
-    public List<UserPhaseResultDto> findByPhaseId(String phaseId){
+    public List<UserPhaseResultDto> findByPhaseId(Long phaseId){
         List<UserPhaseResultDbEntity> entity = userPhaseResultDbBean.filterByPhaseId(phaseId);
         return toDto(entity);
     }
