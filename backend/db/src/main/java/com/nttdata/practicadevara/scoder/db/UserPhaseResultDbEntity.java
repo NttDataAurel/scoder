@@ -8,18 +8,18 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = UserPhaseResultEntity.TBL_USER_PHASE_RES, schema = AbstractBean.SCHEMA_NAME)
+@Table(name = UserPhaseResultDbEntity.TBL_USER_PHASE_RES, schema = AbstractBean.SCHEMA_NAME)
 @NamedQueries({
-        @NamedQuery(name = UserPhaseResultEntity.FIND_ALL, query = "SELECT e FROM UserPhaseResultEntity e"),
-        @NamedQuery(name = UserPhaseResultEntity.FIND_BY_ID, query = "SELECT e FROM UserPhaseResultEntity e WHERE e.id=:"+ AbstractBean.ID_PARAM),
-        @NamedQuery(name = UserPhaseResultEntity.FIND_BY_DATE, query ="SELECT e FROM UserPhaseResultEntity e WHERE e.date=:"+UserPhaseResultEntity.DATE_PARAM),
-        @NamedQuery(name = UserPhaseResultEntity.FIND_BY_USER_ID, query="SELECT e FROM UserPhaseResultEntity e WHERE e.userId=:"+UserPhaseResultEntity.USER_ID_PARAM),
-        @NamedQuery(name = UserPhaseResultEntity.FIND_BY_PHASE_ID, query="SELECT e FROM UserPhaseResultEntity e WHERE e.phaseId=:"+UserPhaseResultEntity.PHASE_ID_PARAM),
-        @NamedQuery(name = UserPhaseResultEntity.FIND_BY_RANKING, query="SELECT e FROM UserPhaseResultEntity e WHERE e.ranking>:"+UserPhaseResultEntity.RANKING_PARAM),
-        @NamedQuery(name = UserPhaseResultEntity.FIND_BY_PASSED, query="SELECT e FROM UserPhaseResultEntity e WHERE e.passed=:"+UserPhaseResultEntity.PASSED_PARAM)
+        @NamedQuery(name = UserPhaseResultDbEntity.FIND_ALL, query = "SELECT e FROM UserPhaseResultEntity e"),
+        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_ID, query = "SELECT e FROM UserPhaseResultEntity e WHERE e.id=:"+ AbstractBean.ID_PARAM),
+        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_DATE, query ="SELECT e FROM UserPhaseResultEntity e WHERE e.date=:"+UserPhaseResultDbEntity.DATE_PARAM),
+        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_USER_ID, query="SELECT e FROM UserPhaseResultEntity e WHERE e.userId=:"+UserPhaseResultDbEntity.USER_ID_PARAM),
+        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_PHASE_ID, query="SELECT e FROM UserPhaseResultEntity e WHERE e.phaseId=:"+UserPhaseResultDbEntity.PHASE_ID_PARAM),
+        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_RANKING, query="SELECT e FROM UserPhaseResultEntity e WHERE e.ranking>:"+UserPhaseResultDbEntity.RANKING_PARAM),
+        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_PASSED, query="SELECT e FROM UserPhaseResultEntity e WHERE e.passed=:"+UserPhaseResultDbEntity.PASSED_PARAM)
 })
 
-public class UserPhaseResultEntity extends AbstractEntity implements Serializable {
+public class UserPhaseResultDbEntity extends AbstractEntity implements Serializable {
     private static final long serialVersionUID = 118334295272084434L;
     
     public static final String FIND_ALL = "USER_PHASE_RESULT_FIND_ALL_JPQL";
@@ -114,10 +114,10 @@ public class UserPhaseResultEntity extends AbstractEntity implements Serializabl
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof UserPhaseResultEntity)) {
+        if (!(object instanceof UserPhaseResultDbEntity)) {
             return false;
         }
-        UserPhaseResultEntity other = (UserPhaseResultEntity) object;
+        UserPhaseResultDbEntity other = (UserPhaseResultDbEntity) object;
         if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
             return false;
         }
