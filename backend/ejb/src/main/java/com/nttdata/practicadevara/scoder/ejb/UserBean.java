@@ -24,8 +24,8 @@ public class UserBean {
         return toDto(entities);
     }
     
-    public List<UserDto> filterByNameAndAddrsss(String name , String addr){
-        List<User> entities = userDbBean.filterByNameAndAddrsss(name , addr);
+    public List<UserDto> filterByNameAndAddrss(String name , String address){
+        List<User> entities = userDbBean.filterByNameAndAddress(name , address);
         return toDto(entities);
     }
     
@@ -53,14 +53,14 @@ public class UserBean {
     
     private List<UserDto> toDto(List<User> list){
         if(list != null){
-            return list.stream().map(e -> new UserDto(e.getId(), e.getname(), e.getsurname(), e.getadr() , e.getphone() , e.getemail() , e.getfilename() , e.get_file() , e.getstate())).collect(Collectors.toList());
+            return list.stream().map(e -> new UserDto(e.getId(), e.getname(), e.getsurname(), e.getaddress() , e.getphone() , e.getemail() , e.getfilename() , e.get_file() , e.getstate())).collect(Collectors.toList());
         }
         return Collections.EMPTY_LIST;
     }
     
     private UserDto toDto(User e){
         if(e != null){
-            return new UserDto(e.getId() , e.getname() , e.getsurname() , e.getadr() , e.getphone() , e.getemail() , e.getfilename() , e.get_file() , e.getstate());
+            return new UserDto(e.getId() , e.getname() , e.getsurname() , e.getaddress() , e.getphone() , e.getemail() , e.getfilename() , e.get_file() , e.getstate());
         }
         return null;
     }
@@ -70,7 +70,7 @@ public class UserBean {
         
         e.setname(dto.getname());
          e.setsurname(dto.getsurname());
-          e.setadr(dto.getadr());
+          e.setaddress(dto.getaddress());
            e.setphone(dto.getphone());
             e.setemail(dto.getemail());
              e.setfilename(dto.getfilename());

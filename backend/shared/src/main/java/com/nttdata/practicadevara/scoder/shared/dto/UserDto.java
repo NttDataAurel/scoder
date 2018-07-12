@@ -13,7 +13,7 @@ public class UserDto {
 
     private String surname;
 
-    private String adr;
+    private String address;
 
     private int phone;
 
@@ -32,7 +32,7 @@ public class UserDto {
         this.id = id;
         this.name = name;
         this.surname = surname;
-        this.adr = adr;
+        this.address = address;
         this.phone = phone;
         this.email = email;
         this.filename = filename;
@@ -57,12 +57,12 @@ public class UserDto {
         this.surname = surname;
     }
 
-    public String getadr() {
-        return adr;
+    public String getaddress() {
+        return address;
     }
 
-    public void setadr(String adr) {
-        this.adr = adr;
+    public void setaddress(String address) {
+        this.address = address;
     }
 
     public int getphone() {

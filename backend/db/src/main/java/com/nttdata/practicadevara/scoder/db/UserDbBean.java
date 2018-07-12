@@ -1,5 +1,6 @@
 package com.nttdata.practicadevara.scoder.db;
 
+import static com.oracle.jrockit.jfr.ContentType.Address;
 import java.util.List;
 import javax.ejb.Stateless;
 
@@ -19,12 +20,12 @@ public class UserDbBean extends AbstractBean<User>{
     
    
     
-    public List<User> filterByNameAndAddrsss(String name, String address) {
+    public List<User> filterByNameAndAddress(String name, String address) {
         String paramName = "%"+name+"%";
-        String paramAddrss = "%"+address+"%";
+        String paramAddress = "%"+Address+"%";
         return manager.createNamedQuery(User.FILTER_BY_NAME_AND_ADDRESS)
                 .setParameter(User.PARAM_NAME, paramName)
-                .setParameter(User.PARAM_ADDRESS, paramAddrss)
+                .setParameter(User.PARAM_ADDRESS, paramAddress)
                 .getResultList();
     }
     

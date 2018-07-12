@@ -15,27 +15,25 @@ import javax.persistence.Table;
 @NamedQueries({
        
         @NamedQuery(name = User.FIND_ALL, query = "SELECT e FROM User e"),
-        @NamedQuery(name = User.FIND_BY_ID, query = "SELECT e FROM User e WHERE e.id=:"+ AbstractBean.ID_PARAM),
-        @NamedQuery(name = User.FILTER_BY_NAME_AND_ADDRESS, query = "SELECT e FROM User e WHERE e.name and e.address like:"+User.PARAM_NAME + User.PARAM_ADDRESS),
-        @NamedQuery(name = User.FILTER_BY_NAME_OR_SURNAME, query = "SELECT e FROM User e WHERE e.NAME or e.SURNAME like:"+ User.FILTER_BY_NAME_OR_SURNAME)
-
-        
+        @NamedQuery(name = User.FIND_BY_ID, query = "SELECT e FROM User e WHERE e.id = :"+ AbstractBean.ID_PARAM),
+        @NamedQuery(name = User.FILTER_BY_NAME_AND_ADDRESS, query = "SELECT e FROM User e WHERE e.name like :"+ User.PARAM_NAME +" and e.address like :" + User.PARAM_ADDRESS),
+        @NamedQuery(name = User.FILTER_BY_NAME_OR_SURNAME, query = "SELECT e FROM User e WHERE e.name like :"+ User.PARAM_NAME +" or e.surname like :" + User.PARAM_SURNAME)
         
 })
 public class User extends AbstractEntity implements Serializable {
     
     private static final long serialVersionUID = 117223295272084434L;
     
-    public static final String FIND_ALL = "FIND_ALL_JPQL";
-    public static final String FIND_BY_ID = "FIND_BY_ID_JPQL";
+    public static final String FIND_ALL = "USER_FIND_ALL_JPQL";
+    public static final String FIND_BY_ID = "USER_FIND_BY_ID_JPQL";
     public static final String TBL_APP_CONFIG = "app_config";
-    public static final String PARAM_NAME = "PARAM_NAME";
-    public static final String PARAM_ADDRESS = "PARAM_ADDRESS";
-    public static final String PARAM_SURNAME = "PARAM_SURNAME";
+    public static final String PARAM_NAME = "param_name";
+    public static final String PARAM_ADDRESS = "param_address";
+    public static final String PARAM_SURNAME = "param_surname";
 
     
-    public static final String FILTER_BY_NAME_AND_ADDRESS = "FILTER_BY_name";
-    public static final String FILTER_BY_NAME_OR_SURNAME = "FILTER_BY_NAME_OR_SURNAME";
+    public static final String FILTER_BY_NAME_AND_ADDRESS = "USER_FILTER_BY_NAME_AND_ADDRESS";
+    public static final String FILTER_BY_NAME_OR_SURNAME = "USER_FILTER_BY_NAME_OR_SURNAME";
 
     
     
@@ -47,8 +45,8 @@ public class User extends AbstractEntity implements Serializable {
     @Column(name = "surname")
     private String surname;
     
-     @Column(name = "adr")
-    private String adr;
+     @Column(name = "address")
+    private String address;
 
      
       @Column(name = "phone")
@@ -89,12 +87,12 @@ public class User extends AbstractEntity implements Serializable {
         this.surname = surname;
     }
     
-    public String getadr() {
-        return adr;
+    public String getaddress() {
+        return address;
     }
     
-     public void setadr(String adr) {
-        this.adr = adr;
+     public void setaddress(String address) {
+        this.address = address;
     }
      
       public int getphone() {
@@ -150,7 +148,7 @@ public class User extends AbstractEntity implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof AppConfigDbEntity)) {
+        if (!(object instanceof User)) {
             return false;
         }
         User other = (User) object;
