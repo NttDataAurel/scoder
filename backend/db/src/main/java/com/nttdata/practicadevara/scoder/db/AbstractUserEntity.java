@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public abstract class AbstractEntity implements Serializable {
+public abstract class AbstractUserEntity implements Serializable {
     
     @Id
     @Column(name = "ID", unique = true)
