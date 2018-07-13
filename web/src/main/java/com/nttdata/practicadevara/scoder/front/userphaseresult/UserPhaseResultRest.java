@@ -50,11 +50,11 @@ public class UserPhaseResultRest extends RestClient {
     }
     
     public Response newUserPhaseResult(Object requestEntity) throws javax.ws.rs.ClientErrorException {
-        return getBaseWebTarget().path("userphaseresult").request(MediaType.APPLICATION_JSON).put(javax.ws.rs.client.Entity.entity(requestEntity, MediaType.APPLICATION_JSON), Response.class);
+        return getBaseWebTarget().path("/userphaseresult").request(MediaType.APPLICATION_JSON).put(javax.ws.rs.client.Entity.entity(requestEntity, MediaType.APPLICATION_JSON), Response.class);
     }
 
     public List<UserPhaseResultDto> listUserPhaseResult() throws javax.ws.rs.ClientErrorException {
-        Response resp = super.path("userphaseresult").request(MediaType.APPLICATION_JSON).get(Response.class);
+        Response resp = super.path("/userphaseresult/UserPhaseResultList").request(MediaType.APPLICATION_JSON).get(Response.class);
         List<UserPhaseResultDto> ret = resp.readEntity(new GenericType<List<UserPhaseResultDto>>(){});
         return ret;
     }
