@@ -28,7 +28,7 @@ public class UserDto {
     public UserDto() {
     }
     
-    public UserDto(long id, String name, String surname, String adr, int phone, String email, String filename, String _file, int state) {
+    public UserDto(long id, String name, String surname, String address, int phone, String email, String filename, String _file, int state) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -41,6 +41,16 @@ public class UserDto {
     }
  
 //Setter & getter
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+   
+    
     public String getname() {
         return name;
     }

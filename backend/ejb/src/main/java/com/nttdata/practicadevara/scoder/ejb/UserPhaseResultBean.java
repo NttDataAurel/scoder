@@ -9,6 +9,7 @@ import com.nttdata.practicadevara.scoder.db.UserPhaseResultDbEntity;
 import com.nttdata.practicadevara.scoder.db.UserPhaseResultDbBean;
 import com.nttdata.practicadevara.scoder.db.DBException;
 import java.util.Collections;
+import java.util.Date;
 import java.util.stream.Collectors;
 import javax.ejb.EJB;
 
@@ -24,7 +25,7 @@ public class UserPhaseResultBean {
         return toDto(entities);
     }
     
-    public List<UserPhaseResultDto> findByDate(String date){
+    public List<UserPhaseResultDto> findByDate(Date date){
         List<UserPhaseResultDbEntity> entity = userPhaseResultDbBean.filterByDate(date);
         return toDto(entity);
     }

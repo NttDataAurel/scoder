@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = User.TBL_APP_CONFIG, schema = AbstractBean.SCHEMA_NAME)
+@Table(name = User.TBL_USER, schema = AbstractBean.SCHEMA_NAME)
 @NamedQueries({
        
         @NamedQuery(name = User.FIND_ALL, query = "SELECT e FROM User e"),
@@ -26,7 +26,7 @@ public class User extends AbstractEntity implements Serializable {
     
     public static final String FIND_ALL = "USER_FIND_ALL_JPQL";
     public static final String FIND_BY_ID = "USER_FIND_BY_ID_JPQL";
-    public static final String TBL_APP_CONFIG = "app_config";
+    public static final String TBL_USER = "user";
     public static final String PARAM_NAME = "param_name";
     public static final String PARAM_ADDRESS = "param_address";
     public static final String PARAM_SURNAME = "param_surname";

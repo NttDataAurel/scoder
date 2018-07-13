@@ -17,12 +17,16 @@ import javax.ws.rs.core.Response;
 import com.nttdata.practicadevara.scoder.shared.dto.UserPhaseResultDto;
 import com.nttdata.practicadevara.scoder.ejb.UserPhaseResultBean;
 import com.nttdata.practicadevara.scoder.shared.exception.BackendException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.POST;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 
 /**
@@ -58,17 +62,23 @@ public class ServicesUserPhaseResult {
     @Path("/searchByDate")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response filterUserPhaseResultValuesByDate(@DefaultValue("") @QueryParam("filterByDate") String date,
-                                        @Context HttpServletRequest servletRequest) {
-        List<UserPhaseResultDto> userPhaseResult = userPhaseResultEjb.findByDate(date);
-        return Response.ok(userPhaseResult).build();
+    public Response filterUserPhaseResultValuesByDate(@DefaultValue("") @QueryParam("filterByDate") String sdate,
+                                        @Context HttpServletRequest servletRequest) throws ParseException {
+    //    try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = sdf.parse(sdate);
+            List<UserPhaseResultDto> userPhaseResult = userPhaseResultEjb.findByDate(date);
+            return Response.ok(userPhaseResult).build();
+      //  } catch (ParseException ex) {
+      //      Logger.getLogger(ServicesUserPhaseResult.class.getName()).log(Level.SEVERE, null, ex);
+      //  }
     }
     
     @GET
     @Path("/searchByUserId")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response filterUserPhaseResultValuesByUserId(@DefaultValue("") @QueryParam("filterByUserId") Long userId,
+    public Response filterUserPhaseResultValuesByUserId(@DefaultValue("0") @QueryParam("filterByUserId") Long userId,
                                         @Context HttpServletRequest servletRequest) {
         List<UserPhaseResultDto> userPhaseResult = userPhaseResultEjb.findByUserId(userId);
         return Response.ok(userPhaseResult).build();
@@ -78,7 +88,7 @@ public class ServicesUserPhaseResult {
     @Path("/searchByPhaseId")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response filterUserPhaseResultValuesByPhaseId(@DefaultValue("") @QueryParam("filterByPhaseId") Long phaseId,
+    public Response filterUserPhaseResultValuesByPhaseId(@DefaultValue("0") @QueryParam("filterByPhaseId") Long phaseId,
                                         @Context HttpServletRequest servletRequest) {
         List<UserPhaseResultDto> userPhaseResult = userPhaseResultEjb.findByPhaseId(phaseId);
         return Response.ok(userPhaseResult).build();
@@ -88,7 +98,7 @@ public class ServicesUserPhaseResult {
     @Path("/searchUserByRank")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response filterUserPhaseResultValuesByRank(@DefaultValue("") @QueryParam("filterByRank") double rank,
+    public Response filterUserPhaseResultValuesByRank(@DefaultValue("0") @QueryParam("filterByRank") Double rank,
                                         @Context HttpServletRequest servletRequest) {
         List<UserPhaseResultDto> userPhaseResult = userPhaseResultEjb.findByRank(rank);
         return Response.ok(userPhaseResult).build();
@@ -98,7 +108,7 @@ public class ServicesUserPhaseResult {
     @Path("/searchUserByPassed")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response filterUserPhaseResultValuesByPassed(@DefaultValue("") @QueryParam("filterByPassed") boolean passed,
+    public Response filterUserPhaseResultValuesByPassed(@DefaultValue("false") @QueryParam("filterByPassed") Boolean passed,
                                         @Context HttpServletRequest servletRequest) {
         List<UserPhaseResultDto> userPhaseResult = userPhaseResultEjb.findByPassed(passed);
         return Response.ok(userPhaseResult).build();

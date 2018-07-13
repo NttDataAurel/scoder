@@ -14,6 +14,8 @@ public class ScoderRestApplication extends Application {
         classes.add(ServicesAppConfig.class);
         classes.add(ServicesPhase.class);
         classes.add(ServicesUserSkill.class);
+        classes.add(ServicesUserPhaseResult.class);
+        classes.add(ServicesUser.class);
         return classes;
     }
    

@@ -1,5 +1,6 @@
 package com.nttdata.practicadevara.scoder.db;
 
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 
@@ -36,7 +37,12 @@ public class UserPhaseResultDbBean extends AbstractBean<UserPhaseResultDbEntity>
         return UserPhaseResultDbEntity.FIND_BY_PASSED;
     }
     
-    public List<UserPhaseResultDbEntity> filterByDate(String date) {
+    /**
+     *
+     * @param date
+     * @return
+     */
+    public List<UserPhaseResultDbEntity> filterByDate(Date date) {
         String param = "%"+date+"%";
         return manager.createNamedQuery(UserPhaseResultDbEntity.FIND_BY_DATE)
                 .setParameter(UserPhaseResultDbEntity.DATE_PARAM, param)
