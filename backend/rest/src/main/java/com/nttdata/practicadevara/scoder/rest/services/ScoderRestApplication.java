@@ -12,6 +12,7 @@ public class ScoderRestApplication extends Application {
         final Set<Class<?>> classes = new HashSet<>();
         // register root resource
         classes.add(ServicesAppConfig.class);
+        classes.add(ServicesPhase.class);
         classes.add(ServicesUserSkill.class);
         classes.add(ServicesUserPhaseResult.class);
         classes.add(ServicesUser.class);

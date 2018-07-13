@@ -1,7 +1,7 @@
-package com.nttdata.practicadevara.scoder.front.appconfig;
+package com.nttdata.practicadevara.scoder.front.phase;
 
 import com.nttdata.practicadevara.scoder.front.RestClient;
-import com.nttdata.practicadevara.scoder.shared.dto.AppConfigDto;
+import com.nttdata.practicadevara.scoder.shared.dto.PhaseDto;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -11,7 +11,7 @@ import javax.ws.rs.core.Response;
 
 @Stateless
 @LocalBean
-public class AppConfigRest extends RestClient {
+public class PhaseRest extends RestClient {
     
     
 //    public <T> T updateAppConfig(Object requestEntity, Class<T> responseType) throws javax.ws.rs.ClientErrorException {
@@ -28,9 +28,9 @@ public class AppConfigRest extends RestClient {
 //        return webTarget.path("appconfig").request(MediaType.APPLICATION_JSON).put(javax.ws.rs.client.Entity.entity(requestEntity, MediaType.APPLICATION_JSON), Response.class);
 //    }
 
-    public List<AppConfigDto> listAppConfig() throws javax.ws.rs.ClientErrorException {
-        Response resp = super.path("appconfiglist").request(MediaType.APPLICATION_JSON).get(Response.class);
-        List<AppConfigDto> ret = resp.readEntity(new GenericType<List<AppConfigDto>>(){});
+    public List<PhaseDto> listPhase() throws javax.ws.rs.ClientErrorException {
+        Response resp = super.path("/phase/list").request(MediaType.APPLICATION_JSON).get(Response.class);
+        List<PhaseDto> ret = resp.readEntity(new GenericType<List<PhaseDto>>(){});
         return ret;
     }
 
