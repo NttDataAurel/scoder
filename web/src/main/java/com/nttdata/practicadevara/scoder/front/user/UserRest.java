@@ -1,9 +1,7 @@
 package com.nttdata.practicadevara.scoder.front.user;
 
 import com.nttdata.practicadevara.scoder.front.RestClient;
-import com.nttdata.practicadevara.scoder.shared.dto.AppConfigDto;
 import com.nttdata.practicadevara.scoder.shared.dto.UserDto;
-import java.util.Arrays;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
