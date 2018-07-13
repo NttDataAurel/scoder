@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>User Skills</title>
+    </h:head>
+    <h:body>
+        UserSkill list
+        <br/>
+        <f:view>
+            <h:form>
+                <h:dataTable value="#{userSkillMBean.userSkills}"  var="userskill"  rowClasses="rowOdd,rowEven">
+                    <h:column>
+                        <f:facet name="header">Id</f:facet>
+                        <h:outputText value="#{userskill.id}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">User_Id</f:facet>
+                        <h:outputText value="#{userskill.userId}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Phase_Id</f:facet>
+                        <h:outputText value="#{userskill.phaseId}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Name</f:facet>
+                        <h:outputText value="#{userskill.name}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Level</f:facet>
+                        <h:outputText value="#{userskill.level}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Comments</f:facet>
+                        <h:outputText value="#{userskill.comments}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view> 
+    </h:body>
+</html>
+

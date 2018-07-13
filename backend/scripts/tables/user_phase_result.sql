@@ -8,6 +8,5 @@ CREATE TABLE `user_phase_result` (
 	`PASSED` VARCHAR(16) NULL DEFAULT NULL,
 	PRIMARY KEY (`ID`)
 )
-COLLATE='utf8mb4_0900_ai_ci'
 ENGINE=InnoDB
 ;
