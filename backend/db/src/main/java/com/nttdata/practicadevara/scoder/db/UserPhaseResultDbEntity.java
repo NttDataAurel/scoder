@@ -1,11 +1,14 @@
 package com.nttdata.practicadevara.scoder.db;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Column;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = UserPhaseResultDbEntity.TBL_USER_PHASE_RESULT, schema = AbstractBean.SCHEMA_NAME)
@@ -38,8 +41,9 @@ public class UserPhaseResultDbEntity extends AbstractEntity implements Serializa
     public static final String RANKING_PARAM = "ranking_param";
     public static final String PASSED_PARAM = "passed_param";
     
+    @Temporal(TemporalType.DATE)
     @Column(name = "_DATE")
-    private String date;
+    private Date date;
     
     @Column(name = "USER_ID")
     private long userId;
@@ -56,11 +60,11 @@ public class UserPhaseResultDbEntity extends AbstractEntity implements Serializa
     @Column(name ="PASSED")
     private boolean passed;
     
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

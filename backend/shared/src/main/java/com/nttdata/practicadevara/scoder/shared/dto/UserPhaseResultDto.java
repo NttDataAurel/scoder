@@ -1,12 +1,13 @@
 package com.nttdata.practicadevara.scoder.shared.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class UserPhaseResultDto implements Serializable{
     private static final long serialVersionUID = 1001;
     
     private Long id;
-    private String date;
+    private Date date;
     private Long userId;
     private Long phaseId;
     private String comments;
@@ -17,7 +18,7 @@ public class UserPhaseResultDto implements Serializable{
     public UserPhaseResultDto() {
     }
 
-    public UserPhaseResultDto(Long id, String date, Long userId, Long phaseId, String comments, String ranking, boolean passed) {
+    public UserPhaseResultDto(Long id, Date date, Long userId, Long phaseId, String comments, String ranking, boolean passed) {
         this.id = id;
         this.date = date;
         this.userId = userId;
@@ -35,11 +36,11 @@ public class UserPhaseResultDto implements Serializable{
         this.id = id;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
