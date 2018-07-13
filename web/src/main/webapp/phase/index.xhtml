@@ -11,7 +11,7 @@
         <br/>
         <f:view>
             <h:form>
-                <h:dataTable value="#{PhaseMBean.phases}"  var="phase"  rowClasses="rowOdd,rowEven">
+                <h:dataTable value="#{phaseMBean.phases}"  var="phase"  rowClasses="rowOdd,rowEven">
                     <h:column>
                         <f:facet name="header">Id</f:facet>
                         <h:outputText value="#{phase.id}"/>
@@ -29,6 +29,18 @@
                         <h:outputText value="#{phase.priority}"/>
                     </h:column>
                 </h:dataTable>
+            </h:form>
+            <h:form>
+                <label>New Phase</label>
+                <h:panelGrid columns="2">
+                <h:outputText value="Phase's Name"/>
+                <h:inputText id="phase_name" value="#{phaseMBean.newPhase.name}" validatorMessage="Introduce a diffrent name then the original one"/>
+                <h:outputText value="Phase's Description"/>
+                <h:inputText id="phase_description" value="#{phaseMBean.newPhase.description}" validatorMessage="Please introduce a small description"/>
+                <h:outputText value="Phase's Priority"/>
+                <h:inputText id="phase_priority" value="#{phaseMBean.newPhase.priority}" validatorMessage="Which is phase's priority?"/>
+                <h:commandButton id="create_phase" value="Create" action="#{phaseMBean.createPhase}"/>
+                </h:panelGrid>
             </h:form>
         </f:view> 
     </h:body>

@@ -33,5 +33,10 @@ public class PhaseRest extends RestClient {
         List<PhaseDto> ret = resp.readEntity(new GenericType<List<PhaseDto>>(){});
         return ret;
     }
+    
+    public void createPhase(PhaseDto phase) throws javax.ws.rs.ClientErrorException {
+        Response resp=super.path("/phase").request(MediaType.APPLICATION_JSON).put(javax.ws.rs.client.Entity.entity(phase, MediaType.APPLICATION_JSON), Response.class);
+        List<PhaseDto> ret = resp.readEntity(new GenericType<List<PhaseDto>>(){});
+    }
 
 }

@@ -9,6 +9,7 @@ import javax.inject.Named;
 @RequestScoped
 @Named("phaseMBean")
 public class PhaseMBean {
+    private PhaseDto newPhase=new PhaseDto();
     
     @EJB
     private PhaseRest restClient;
@@ -24,4 +25,21 @@ public class PhaseMBean {
         return list;
     }
     
+    
+    public void createPhase(){
+//        try {newPhase = new PhaseDto();
+            restClient.createPhase(newPhase);
+            newPhase = new PhaseDto();
+//        }catch(BackendException ex){
+//            //todo afisare eroare
+//        }
+    }
+    
+    public PhaseDto getNewPhase() {
+        return newPhase;
+    }
+
+    public void setNewPhase(PhaseDto newPhase) {
+        this.newPhase = newPhase;
+    }
 }
