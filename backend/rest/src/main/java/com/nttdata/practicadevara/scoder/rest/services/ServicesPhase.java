@@ -16,14 +16,10 @@ import javax.ws.rs.core.Response;
 
 import com.nttdata.practicadevara.scoder.shared.dto.PhaseDto;
 import com.nttdata.practicadevara.scoder.ejb.PhaseBean;
-import com.nttdata.practicadevara.scoder.shared.exception.BackendException;
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.POST;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 
 /**
