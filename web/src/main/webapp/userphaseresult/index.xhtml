@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>User Phase Result</title>
+    </h:head>
+    <h:body>
+        UserPhaseResult 
+        <br/>
+        <f:view>
+            <h:form>
+                <h:dataTable value="#{userPhaseReultMBean.userPhaseResult}"  var="userphaseresult"  rowClasses="rowOdd,rowEven">
+                    <h:column>
+                        <f:facet name="header">ID</f:facet>
+                        <h:outputText value="#{userphaseresult.id}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">_DATE</f:facet>
+                        <h:outputText value="#{userphaseresult.date}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">USER_ID</f:facet>
+                        <h:outputText value="#{userphaseresult.userId}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">PHASE_ID</f:facet>
+                        <h:outputText value="#{userphaseresult.phaseId}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">COMMENTS</f:facet>
+                        <h:outputText value="#{userphaseresult.comments}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">RANKING</f:facet>
+                        <h:outputText value="#{userphaseresult.ranking}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">PASSED</f:facet>
+                        <h:outputText value="#{userphaseresult.passed}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view> 
+    </h:body>
+</html>
+
