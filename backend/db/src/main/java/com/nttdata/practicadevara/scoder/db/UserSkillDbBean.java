@@ -15,15 +15,15 @@ public class UserSkillDbBean extends AbstractBean<UserSkillDbEntity>{
         return UserSkillDbEntity.FIND_BY_ID;
     }
        
-    public List<UserSkillDbEntity> filterByUserId(Long user_id) {
-        String param = "%"+user_id+"%";
+    public List<UserSkillDbEntity> filterByUserId(Long userId) {
+        String param = "%"+userId+"%";
         return manager.createNamedQuery(UserSkillDbEntity.FILTER_BY_USER_ID)
                 .setParameter(UserSkillDbEntity.FILTER_BY_USER_ID_PARAM, param)
                 .getResultList();
     }
     
-    public List<UserSkillDbEntity> filterByPhaseId(Long phase_id) {
-        String param = "%"+phase_id+"%";
+    public List<UserSkillDbEntity> filterByPhaseId(Long phaseId) {
+        String param = "%"+phaseId+"%";
         return manager.createNamedQuery(UserSkillDbEntity.FILTER_BY_PHASE_ID)
                 .setParameter(UserSkillDbEntity.FILTER_BY_PHASE_ID_PARAM, param)
                 .getResultList();
