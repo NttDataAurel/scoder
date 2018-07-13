@@ -12,8 +12,8 @@ import javax.persistence.Table;
 @NamedQueries({
         @NamedQuery(name = UserSkillDbEntity.FIND_ALL, query = "SELECT e FROM UserSkillDbEntity e"),
         @NamedQuery(name = UserSkillDbEntity.FIND_BY_ID, query = "SELECT e FROM UserSkillDbEntity e WHERE e.id=:"+ AbstractBean.ID_PARAM),
-        @NamedQuery(name = UserSkillDbEntity.FILTER_BY_USER_ID, query = "SELECT e FROM UserSkillDbEntity e WHERE e.user_id like :"+ UserSkillDbEntity.FILTER_BY_USER_ID_PARAM),
-        @NamedQuery(name = UserSkillDbEntity.FILTER_BY_PHASE_ID, query = "Select e FROM UserSkillDbEntity e WHERE e.phase_id like :"+ UserSkillDbEntity.FILTER_BY_PHASE_ID_PARAM),
+        @NamedQuery(name = UserSkillDbEntity.FILTER_BY_USER_ID, query = "SELECT e FROM UserSkillDbEntity e WHERE e.userId like :"+ UserSkillDbEntity.FILTER_BY_USER_ID_PARAM),
+        @NamedQuery(name = UserSkillDbEntity.FILTER_BY_PHASE_ID, query = "Select e FROM UserSkillDbEntity e WHERE e.phaseId like :"+ UserSkillDbEntity.FILTER_BY_PHASE_ID_PARAM),
         @NamedQuery(name = UserSkillDbEntity.FILTER_BY_NAME, query = "Select e FROM UserSkillDbEntity e WHERE e.name like :"+ UserSkillDbEntity.FILTER_BY_NAME_PARAM)
 })
 public class UserSkillDbEntity extends AbstractEntity implements Serializable {
@@ -23,17 +23,17 @@ public class UserSkillDbEntity extends AbstractEntity implements Serializable {
     public static final String FIND_BY_ID = "USER_SKILL_FIND_BY_ID_JPQL";
     public static final String TBL_USER_SKILL = "user_skill";
     public static final String FILTER_BY_USER_ID = "USER_SKILL_FILTER_BY_USER_ID";
-    public static final String FILTER_BY_USER_ID_PARAM = "user_id_param";
+    public static final String FILTER_BY_USER_ID_PARAM = "userId_param";
     public static final String FILTER_BY_PHASE_ID = "USER_SKILL_FILTER_BY_PHASE_ID";
-    public static final String FILTER_BY_PHASE_ID_PARAM = "phase_id_param";
+    public static final String FILTER_BY_PHASE_ID_PARAM = "phaseId_param";
     public static final String FILTER_BY_NAME = "USER_SKILL_FILTER_BY_NAME";
     public static final String FILTER_BY_NAME_PARAM = "name_param";
     
     @Column(name = "USER_ID")
-    private Long user_id;
+    private Long userId;
     
     @Column(name = "PHASE_ID")
-    private Long phase_id;
+    private Long phaseId;
     
     @Column(name = "NAME")
     private String name;
@@ -45,19 +45,19 @@ public class UserSkillDbEntity extends AbstractEntity implements Serializable {
     private String comments;
 
     public Long getUserId() {
-        return user_id;
+        return userId;
     }
 
-    public void setUserId(Long user_id) {
-        this.user_id = user_id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public Long getPhaseId() {
-        return phase_id;
+        return phaseId;
     }
 
-    public void setPhaseId(Long phase_id) {
-        this.phase_id = phase_id;
+    public void setPhaseId(Long phaseId) {
+        this.phaseId = phaseId;
     }
     
     public String getName() {

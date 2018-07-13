@@ -16,6 +16,7 @@ import javax.ws.rs.core.Response;
 
 import com.nttdata.practicadevara.scoder.shared.dto.PhaseDto;
 import com.nttdata.practicadevara.scoder.ejb.PhaseBean;
+import javax.ejb.Stateless;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
@@ -26,6 +27,7 @@ import javax.ws.rs.QueryParam;
  * REST Web Service
  */
 @Path("/phase")
+@Stateless
 public class ServicesPhase {
 
     @EJB 
@@ -90,7 +92,7 @@ public class ServicesPhase {
     }
 
     @PUT
-    @Path("/")
+    //@Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public void createPhase(PhaseDto phase) {

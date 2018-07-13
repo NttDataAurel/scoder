@@ -68,10 +68,10 @@ public class ServicesUserSkill {
     @Path("/searchByUserId")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response filterUserSkillValuesByUserId(@DefaultValue("") @QueryParam("filterByUserId") Long user_id,
+    public Response filterUserSkillValuesByUserId(@DefaultValue("") @QueryParam("filterByUserId") Long userId,
                                         @Context HttpServletRequest servletRequest) {
         
-        List<UserSkillDto> userSkills = userSkillEjb.filterByUserId(user_id);
+        List<UserSkillDto> userSkills = userSkillEjb.filterByUserId(userId);
         return Response.ok(userSkills).build();
     }
 
@@ -79,9 +79,9 @@ public class ServicesUserSkill {
     @Path("/searchByPhaseId")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response filterUserSkillValuesByPhaseId(@DefaultValue("") @QueryParam("filterByPhaseId") Long phase_id,
+    public Response filterUserSkillValuesByPhaseId(@DefaultValue("") @QueryParam("filterByPhaseId") Long phaseId,
                                         @Context HttpServletRequest servletRequest) {
-        List<UserSkillDto> userSkills = userSkillEjb.filterByPhaseId(phase_id);
+        List<UserSkillDto> userSkills = userSkillEjb.filterByPhaseId(phaseId);
         return Response.ok(userSkills).build();
     }
 

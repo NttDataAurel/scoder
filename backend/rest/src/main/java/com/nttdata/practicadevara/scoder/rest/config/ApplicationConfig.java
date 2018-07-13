@@ -28,6 +28,7 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(com.nttdata.practicadevara.scoder.rest.services.ServicesAppConfig.class);
+        resources.add(com.nttdata.practicadevara.scoder.rest.services.ServicesPhase.class);
     }
     
 }

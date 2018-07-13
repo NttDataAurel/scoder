@@ -1,6 +1,5 @@
 package com.nttdata.practicadevara.scoder.rest.services;
 
-import com.nttdata.practicadevara.scoder.rest.services.ServicesAppConfig;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import java.util.HashSet;

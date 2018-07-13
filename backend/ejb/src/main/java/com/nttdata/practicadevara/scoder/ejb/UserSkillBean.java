@@ -29,13 +29,13 @@ public class UserSkillBean {
         return toDto(entity);
     }
     
-    public List<UserSkillDto> filterByUserId(Long user_id){
-        List<UserSkillDbEntity> entities = userSkillDbBean.filterByUserId(user_id);
+    public List<UserSkillDto> filterByUserId(Long userId){
+        List<UserSkillDbEntity> entities = userSkillDbBean.filterByUserId(userId);
         return toDto(entities);
     }
 
-    public List<UserSkillDto> filterByPhaseId(Long phase_id){
-        List<UserSkillDbEntity> entities = userSkillDbBean.filterByPhaseId(phase_id);
+    public List<UserSkillDto> filterByPhaseId(Long phaseId){
+        List<UserSkillDbEntity> entities = userSkillDbBean.filterByPhaseId(phaseId);
         return toDto(entities);
     }
     

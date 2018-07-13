@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class PhaseDto implements Serializable{
     private static final long serialVersionUID = 1001;
     
-    private Long id;
+    private Long id=null;
     private String name;
     private String description;
     private String priority;
