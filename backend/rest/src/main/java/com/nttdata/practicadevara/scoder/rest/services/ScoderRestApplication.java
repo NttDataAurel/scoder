@@ -1,6 +1,5 @@
 package com.nttdata.practicadevara.scoder.rest.services;
 
-import com.nttdata.practicadevara.scoder.rest.services.ServicesAppConfig;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import java.util.HashSet;
@@ -14,6 +13,7 @@ public class ScoderRestApplication extends Application {
         // register root resource
         classes.add(ServicesAppConfig.class);
         classes.add(ServicesUserSkill.class);
+        classes.add(ServicesUser.class);
         return classes;
     }
    

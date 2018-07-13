@@ -41,6 +41,16 @@ public class UserDto {
     }
  
 //Setter & getter
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+   
+    
     public String getname() {
         return name;
     }

@@ -24,7 +24,7 @@ public class UserBean {
         return toDto(entities);
     }
     
-    public List<UserDto> filterByNameAndAddrss(String name , String address){
+    public List<UserDto> filterByNameAndAddress(String name , String address){
         List<User> entities = userDbBean.filterByNameAndAddress(name , address);
         return toDto(entities);
     }
