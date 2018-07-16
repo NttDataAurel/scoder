@@ -31,13 +31,12 @@ public UserSkillMBean() {
     }
     
     public List<UserSkillDto> getUserSkills(){
-        if(list.isEmpty() || list == null) {
+        if(list == null || list.isEmpty()) {
             if(filterByNameTxt != null && filterByNameTxt.isEmpty()){
                 list = restClient.listUserSkill();
             } else {
                 list = restClient.filterByNameUserSkill(filterByNameTxt);
             }
-        } else {
         }
         return list;
     }

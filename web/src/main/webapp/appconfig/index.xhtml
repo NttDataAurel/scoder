@@ -19,7 +19,7 @@
             </h:form>
             <br/>
             <h:form id="appConfigForm">
-                <h:dataTable value="#{appConfigMBean.appConfigs}"  var="appconfig"  rowClasses="rowOdd,rowEven" >
+                <h:dataTable value="#{appConfigMBean.appConfigs}"  var="appconfig"  rowClasses="rowOdd,rowEven" border="1" >
                     <h:column>
                         <f:facet name="header">Id</f:facet>
                         <h:outputText value="#{appconfig.id}"/>
