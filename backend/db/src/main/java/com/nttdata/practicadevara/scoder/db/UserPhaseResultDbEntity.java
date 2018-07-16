@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
         @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_PHASE_ID, query="SELECT e FROM UserPhaseResultDbEntity e WHERE e.phaseId=:"+UserPhaseResultDbEntity.PHASE_ID_PARAM),
         @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_RANKING, query="SELECT e FROM UserPhaseResultDbEntity e WHERE e.ranking>:"+UserPhaseResultDbEntity.RANKING_PARAM),
         @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_PASSED, query="SELECT e FROM UserPhaseResultDbEntity e WHERE e.passed=:"+UserPhaseResultDbEntity.PASSED_PARAM),
-        @NamedQuery(name = UserPhaseResultDbEntity.FILTER, query="SELECT e FROM UserPhaseResultDbEntity e WHERE e.ranking like :"+UserPhaseResultDbEntity.RANKING_PARAM +" OR e.passed = :" + UserPhaseResultDbEntity.PASSED_PARAM + " OR e.date = :"+UserPhaseResultDbEntity.DATE_PARAM)
+        @NamedQuery(name = UserPhaseResultDbEntity.FILTER, query="SELECT e FROM UserPhaseResultDbEntity e WHERE e.ranking like :"+UserPhaseResultDbEntity.RANKING_PARAM)
 })
 
 public class UserPhaseResultDbEntity extends AbstractEntity implements Serializable {

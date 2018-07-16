@@ -67,7 +67,7 @@ public class UserPhaseResultRest extends RestClient {
       }
     
     public List<UserPhaseResultDto> filterUserPhaseResult(String text) throws ClientErrorException {
-        Response resp = super.path("userphaseresultsearch")
+        Response resp = super.path("/userphaseresult/userphaseresultsearch")
                 .queryParam("filter", text)
                 .request(MediaType.APPLICATION_JSON)
                 .get(Response.class);

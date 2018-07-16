@@ -40,8 +40,6 @@ public class UserPhaseResultDbBean extends AbstractBean<UserPhaseResultDbEntity>
         String param = "%"+sfilter+"%";
         return manager.createNamedQuery(UserPhaseResultDbEntity.FILTER)
                 .setParameter(UserPhaseResultDbEntity.RANKING_PARAM, param)
-                .setParameter(UserPhaseResultDbEntity.PASSED_PARAM, sfilter)
-                .setParameter(UserPhaseResultDbEntity.DATE_PARAM, sfilter)
                 .getResultList();
     }
     

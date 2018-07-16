@@ -15,8 +15,9 @@ public class UserPhaseResultMbean implements Serializable{
     
     private static final long serialVersionUID = 1019;
     
-    private static final String INDEX_XHTML = "index";
-    private static final String USER_PHASE_RESULT_EDIT_XHTML = "createOrEdit";
+    private static final String INDEX_XHTML = "/index";
+    private static final String USER_PHASE_RESULT_INDEX_XHTML = "/userphaseresult/index";
+    private static final String USER_PHASE_RESULT_EDIT_XHTML = "/userphaseresult/createOrEdit";
     
     @EJB
     private UserPhaseResultRest restClient;
@@ -26,7 +27,9 @@ public class UserPhaseResultMbean implements Serializable{
     private List<UserPhaseResultDto> list;
     private boolean isCreate;
     private boolean isEdit;
+    private String comingFromViewId;
 
+    
     public UserPhaseResultMbean() {
     }
     
@@ -65,6 +68,16 @@ public class UserPhaseResultMbean implements Serializable{
         this.selectedUserPhaseResult = selectedUserPhaseResult;
     }
     
+    private void pushPageComingFrom(){
+        comingFromViewId = FacesContext.getCurrentInstance().getViewRoot().getViewId();
+    }
+    
+    private String popPageComingFrom(){
+        String pageId = comingFromViewId != null ? comingFromViewId : INDEX_XHTML;
+        comingFromViewId = null;
+        return pageId;
+    }
+    
     public String startEdit(){
         isEdit = true;
         isCreate = false;
@@ -95,7 +108,7 @@ public class UserPhaseResultMbean implements Serializable{
         selectedUserPhaseResult = null;
         reload();
         isEdit = false;
-        return INDEX_XHTML;
+        return popPageComingFrom();
     }
     public String create(){
         try{
@@ -106,12 +119,11 @@ public class UserPhaseResultMbean implements Serializable{
         selectedUserPhaseResult = null;
         reload();
         isCreate = false;
-        return INDEX_XHTML;
+        return popPageComingFrom();
     }
 
     public void delete(){
-        System.out.println("Delete "+selectedUserPhaseResult);
-        //restClient.delete(entryToDelete);
+        FacesContext.getCurrentInstance().addMessage("userPhaseResultForm", new FacesMessage("Error","Delete method not yet implemented") ); 
     }
   
 }
