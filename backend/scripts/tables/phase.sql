@@ -12,13 +12,20 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping structure for table scoderdb.phase
-CREATE TABLE IF NOT EXISTS `phase` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` text NOT NULL,
-  `description` text NOT NULL,
-  `priority` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci MAX_ROWS=100000 COMMENT='faza';
+CREATE TABLE `phase` (
+	`id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`name` TEXT NOT NULL,
+	`description` TEXT NOT NULL,
+	`priority` TEXT NOT NULL,
+	PRIMARY KEY (`id`)
+)
+COMMENT='faza'
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=4
+MAX_ROWS=100000
+;
+
 
 -- Dumping data for table scoderdb.phase: ~3 rows (approximately)
 /*!40000 ALTER TABLE `phase` DISABLE KEYS */;
@@ -31,3 +38,4 @@ INSERT INTO `phase` (`id`, `name`, `description`, `priority`) VALUES
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
