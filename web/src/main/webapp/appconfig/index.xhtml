@@ -7,10 +7,16 @@
         <title>Application Config</title>
     </h:head>
     <h:body>
-        AppConfig list
+        <h1>AppConfig list</h1>
         <br/>
         <f:view>
-            <h:form>
+            <h:form id="appConfigFilterForm">
+                Filter: 
+                <h:inputText value="#{appConfigMBean.filterText}"/> 
+                <h:commandLink value="Search" action="#{appConfigMBean.filter}" type="submit"/>
+            </h:form>
+            <br/>
+            <h:form id="appConfigForm">
                 <h:dataTable value="#{appConfigMBean.appConfigs}"  var="appconfig"  rowClasses="rowOdd,rowEven" border="1">
                     <h:column>
                         <f:facet name="header">Id</f:facet>
@@ -24,7 +30,18 @@
                         <f:facet name="header">Value</f:facet>
                         <h:outputText value="#{appconfig.value}"/>
                     </h:column>
+                    <h:column>
+                        <f:facet name="header">Action</f:facet>
+                        <h:commandButton value="Edit" action="#{appConfigMBean.startEdit}">
+                            <f:setPropertyActionListener value="#{appconfig}" target="#{appConfigMBean.selectedAppConfig}"/>
+                        </h:commandButton>
+                            
+                        <h:commandButton value="Delete" action="#{appConfigMBean.delete}">
+                            <f:setPropertyActionListener value="#{appconfig}" target="#{appConfigMBean.selectedAppConfig}"/>
+                        </h:commandButton>
+                    </h:column>
                 </h:dataTable>
+                <h:commandButton value="Create new" action="#{appConfigMBean.startCreate}"/>
             </h:form>
         </f:view> 
     </h:body>
