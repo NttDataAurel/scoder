@@ -15,8 +15,9 @@ public class UserSkillMBean implements Serializable{
     
     private static final long serialVersionUID = 1019;
     
-    private static final String INDEX_XHTML = "index";
-    private static final String APP_CONFIG_EDIT_XHTML = "createOrEdit";
+    private static final String INDEX_XHTML = "/index";
+    private static final String USER_SKILL_INDEX_XHTML = "/userskill/index";
+    private static final String USER_SKILL_EDIT_XHTML = "/userskill/createOrEdit";
     
     @EJB
     private UserSkillRest restClient;
@@ -26,12 +27,13 @@ public class UserSkillMBean implements Serializable{
     private List<UserSkillDto> list;
     private boolean isCreate;
     private boolean isEdit;
+    private String comingFromViewIdUserSkill;
 
 public UserSkillMBean() {
     }
     
     public List<UserSkillDto> getUserSkills(){
-        if(list == null || list.isEmpty()) {
+        if(list == null) {
             if(filterByNameTxt != null && filterByNameTxt.isEmpty()){
                 list = restClient.listUserSkill();
             } else {
@@ -65,17 +67,27 @@ public UserSkillMBean() {
         this.selectedUserSkill = selectedUserSkill;
     }
     
+    private void pushPageComingFromUserSkill(){
+        comingFromViewIdUserSkill = FacesContext.getCurrentInstance().getViewRoot().getViewId();
+    }
+    
+    private String popPageComingFromUserSkill(){
+        String userSkillPageId = comingFromViewIdUserSkill != null ? comingFromViewIdUserSkill : USER_SKILL_INDEX_XHTML;
+        comingFromViewIdUserSkill = null;
+        return userSkillPageId;
+    }
+    
     public String startEdit(){
         isEdit = true;
         isCreate = false;
-        return APP_CONFIG_EDIT_XHTML;
+        return USER_SKILL_EDIT_XHTML;
     }
     
     public String startCreate(){
         isEdit = false;
         isCreate = true;
         selectedUserSkill = new UserSkillDto();
-        return APP_CONFIG_EDIT_XHTML;
+        return USER_SKILL_EDIT_XHTML;
     }
 
     public boolean isIsCreate() {
@@ -95,7 +107,7 @@ public UserSkillMBean() {
         selectedUserSkill = null;
         reload();
         isEdit = false;
-        return INDEX_XHTML;
+        return popPageComingFromUserSkill();
     }
     public String create(){
         try{
@@ -106,7 +118,7 @@ public UserSkillMBean() {
         selectedUserSkill = null;
         reload();
         isCreate = false;
-        return INDEX_XHTML;
+        return popPageComingFromUserSkill();
     }
 
     public void delete(){
