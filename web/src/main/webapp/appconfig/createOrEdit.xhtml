@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Application Config</title>
+    </h:head>
+    <h:body>
+        AppConfig   <h:outputText value="edit" rendered="#{appConfigMBean.isEdit}"/>
+                    <h:outputText value="create" rendered="#{appConfigMBean.isCreate}"/>
+        <br/>
+        <f:view>
+            <h:form id="appConfigCreateOrEditForm">
+                Key:<h:inputText  value="#{appConfigMBean.selectedAppConfig.key}"/>
+                <br/>
+                Value:<h:inputText  value="#{appConfigMBean.selectedAppConfig.value}"/>
+                <br/>
+                <h:commandButton value="Edit"   action="#{appConfigMBean.edit}"   rendered="#{appConfigMBean.isEdit}"/>
+                <h:commandButton value="Create" action="#{appConfigMBean.create}" rendered="#{appConfigMBean.isCreate}"/>
+            </h:form>
+        </f:view> 
+    </h:body>
+</html>
+
