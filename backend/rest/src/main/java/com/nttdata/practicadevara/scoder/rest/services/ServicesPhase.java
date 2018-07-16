@@ -107,6 +107,7 @@ public class ServicesPhase {
     }
     
     @DELETE
+    @Path("/delete")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public void deletePhase(PhaseDto phase) throws DBException {
