@@ -21,14 +21,14 @@ public class UserDto {
 
     private String filename;
 
-    private String _file;
+    private String file;
 
     private int state;
 
     public UserDto() {
     }
     
-    public UserDto(long id, String name, String surname, String address, int phone, String email, String filename, String _file, int state) {
+    public UserDto(long id, String name, String surname, String address, int phone, String email, String filename, String file, int state) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -36,7 +36,7 @@ public class UserDto {
         this.phone = phone;
         this.email = email;
         this.filename = filename;
-        this._file = _file;
+        this.file = file;
         this.state = state;
     }
  
@@ -49,69 +49,68 @@ public class UserDto {
     public void setId(long id) {
         this.id = id;
     }
-   
-    
-    public String getname() {
+
+    public String getName() {
         return name;
     }
 
-    public void setname(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getsurname() {
+    public String getSurname() {
         return surname;
     }
 
-    public void setsurname(String surname) {
+    public void setSurname(String surname) {
         this.surname = surname;
     }
 
-    public String getaddress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setaddress(String address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
-    public int getphone() {
+    public int getPhone() {
         return phone;
     }
 
-    public void setphone(int phone) {
+    public void setPhone(int phone) {
         this.phone = phone;
     }
 
-    public String getemail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setemail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getfilename() {
+    public String getFilename() {
         return filename;
     }
 
-    public void setfilename(String filename) {
+    public void setFilename(String filename) {
         this.filename = filename;
     }
 
-    public String get_file() {
-        return _file;
+    public String getFile() {
+        return file;
     }
 
-    public void set_file(String _file) {
-        this._file = _file;
+    public void setFile(String file) {
+        this.file = file;
     }
 
-    public int getstate() {
+    public int getState() {
         return state;
     }
 
-    public void setstate(int state) {
+    public void setState(int state) {
         this.state = state;
     }
 

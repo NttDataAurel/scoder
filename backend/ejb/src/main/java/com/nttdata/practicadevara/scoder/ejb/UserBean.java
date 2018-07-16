@@ -68,14 +68,14 @@ public class UserBean {
     private User fromDto(UserDto dto){
         User e = new User();
         
-        e.setname(dto.getname());
-         e.setsurname(dto.getsurname());
-          e.setaddress(dto.getaddress());
-           e.setphone(dto.getphone());
-            e.setemail(dto.getemail());
-             e.setfilename(dto.getfilename());
-              e.set_file(dto.get_file());
-               e.setstate(dto.getstate());
+        e.setname(dto.getName());
+         e.setsurname(dto.getSurname());
+          e.setaddress(dto.getAddress());
+           e.setphone(dto.getPhone());
+            e.setemail(dto.getEmail());
+             e.setfilename(dto.getFilename());
+              e.set_file(dto.getFile());
+               e.setstate(dto.getState());
         
         return e;
     }
