@@ -15,8 +15,7 @@ public class UserPhaseResultDbBean extends AbstractBean<UserPhaseResultDbEntity>
     public String findByIdNamedQuery(){
         return UserPhaseResultDbEntity.FIND_BY_ID;
     }
-    
-    
+       
     public String findByDateQuery(){
         return UserPhaseResultDbEntity.FIND_BY_DATE;
     }
@@ -35,6 +34,15 @@ public class UserPhaseResultDbBean extends AbstractBean<UserPhaseResultDbEntity>
     
     public String findByQuery(){
         return UserPhaseResultDbEntity.FIND_BY_PASSED;
+    }
+    
+    public List<UserPhaseResultDbEntity> filter(String sfilter) {
+        String param = "%"+sfilter+"%";
+        return manager.createNamedQuery(UserPhaseResultDbEntity.FILTER)
+                .setParameter(UserPhaseResultDbEntity.RANKING_PARAM, param)
+                .setParameter(UserPhaseResultDbEntity.PASSED_PARAM, sfilter)
+                .setParameter(UserPhaseResultDbEntity.DATE_PARAM, sfilter)
+                .getResultList();
     }
     
     /**
