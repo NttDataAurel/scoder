@@ -110,8 +110,7 @@ public class AppConfigMBean implements Serializable{
     }
 
     public void delete(){
-        System.out.println("Delete "+selectedAppConfig);
-        //restClient.delete(entryToDelete);
+        FacesContext.getCurrentInstance().addMessage("appConfigForm", new FacesMessage("Error","Delete method not yet implemented") ); 
     }
   
 }
