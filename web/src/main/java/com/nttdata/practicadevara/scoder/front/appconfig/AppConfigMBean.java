@@ -15,8 +15,9 @@ public class AppConfigMBean implements Serializable{
     
     private static final long serialVersionUID = 1011;
     
-    private static final String INDEX_XHTML = "index";
-    private static final String APP_CONFIG_EDIT_XHTML = "createOrEdit";
+    private static final String INDEX_XHTML = "/index";
+    private static final String APP_CONFIG_INDEX_XHTML = "/appconfig/index";
+    private static final String APP_CONFIG_EDIT_XHTML = "/appconfig/createOrEdit";
     
     @EJB
     private AppConfigRest restClient;
@@ -26,6 +27,7 @@ public class AppConfigMBean implements Serializable{
     private List<AppConfigDto> list;
     private boolean isCreate;
     private boolean isEdit;
+    private String comingFromViewId;
 
     public AppConfigMBean() {
     }
@@ -65,13 +67,26 @@ public class AppConfigMBean implements Serializable{
         this.selectedAppConfig = selectedAppConfig;
     }
     
+    private void pushPageComingFrom(){
+        comingFromViewId = FacesContext.getCurrentInstance().getViewRoot().getViewId();
+    }
+    
+    private String popPageComingFrom(){
+        String pageId = comingFromViewId != null ? comingFromViewId : INDEX_XHTML;
+        comingFromViewId = null;
+        return pageId;
+    }
+    
+    
     public String startEdit(){
+        pushPageComingFrom();
         isEdit = true;
         isCreate = false;
         return APP_CONFIG_EDIT_XHTML;
     }
     
     public String startCreate(){
+        pushPageComingFrom();
         isEdit = false;
         isCreate = true;
         selectedAppConfig = new AppConfigDto();
@@ -95,7 +110,7 @@ public class AppConfigMBean implements Serializable{
         selectedAppConfig = null;
         reload();
         isEdit = false;
-        return INDEX_XHTML;
+        return popPageComingFrom();
     }
     public String create(){
         try{
@@ -106,11 +121,11 @@ public class AppConfigMBean implements Serializable{
         selectedAppConfig = null;
         reload();
         isCreate = false;
-        return INDEX_XHTML;
+        return popPageComingFrom();
     }
 
     public void delete(){
         FacesContext.getCurrentInstance().addMessage("appConfigForm", new FacesMessage("Error","Delete method not yet implemented") ); 
     }
-  
+    
 }
