@@ -20,6 +20,7 @@ import com.nttdata.practicadevara.scoder.shared.exception.BackendException;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.POST;
 import javax.ws.rs.PathParam;
@@ -114,5 +115,13 @@ public class ServicesUserSkill {
         }catch(DBException ex){
             throw new BackendException(ex.getMessage());
         }
+    }
+    
+    @DELETE
+    @Path("/delete")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void deleteUserSkill(@DefaultValue("") @QueryParam("id")  Long id) throws DBException {
+        userSkillEjb.deleteUserSkill(id);
     }
 }

@@ -28,7 +28,7 @@ public class UserSkillDbBean extends AbstractBean<UserSkillDbEntity>{
                 .setParameter(UserSkillDbEntity.FILTER_BY_PHASE_ID_PARAM, param)
                 .getResultList();
     }
-    
+      
     public List<UserSkillDbEntity> filterByName(String name) {
         String param = "%"+name+"%";
         return manager.createNamedQuery(UserSkillDbEntity.FILTER_BY_NAME)

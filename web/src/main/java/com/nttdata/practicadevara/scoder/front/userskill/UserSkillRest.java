@@ -56,4 +56,7 @@ public class UserSkillRest extends RestClient {
         return ret;
     }
     
+    public void deleteUserSkill(UserSkillDto entry) throws ClientErrorException, BackendException{
+        super.path("userskill/delete").queryParam("id", entry.getId()).request(MediaType.APPLICATION_JSON).delete(Response.class);
+    }
 }

@@ -98,6 +98,17 @@ public UserSkillMBean() {
         return isEdit;
     }
     
+    public void deleteUserSkill(){
+        try{
+            restClient.deleteUserSkill(selectedUserSkill);
+        }
+        catch(Exception e){
+            FacesContext.getCurrentInstance().addMessage("userSkillForm", new FacesMessage("Error",e.getMessage()) );
+        }
+        selectedUserSkill = null;
+        reload();
+    }
+    
     public String edit(){
         try{
             restClient.update(selectedUserSkill);
@@ -120,9 +131,4 @@ public UserSkillMBean() {
         isCreate = false;
         return popPageComingFromUserSkill();
     }
-
-    public void delete(){
-        FacesContext.getCurrentInstance().addMessage("userSkillForm", new FacesMessage("Error","Delete method not yet implemented") ); 
-    }
-  
 }

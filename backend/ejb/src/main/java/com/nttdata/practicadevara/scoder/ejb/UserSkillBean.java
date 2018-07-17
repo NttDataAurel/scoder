@@ -56,6 +56,10 @@ public class UserSkillBean {
         return toDto(entity);
     }
     
+    public void deleteUserSkill(Long id) throws DBException {
+        userSkillDbBean.delete(id);
+    }
+    
     private List<UserSkillDto> toDto(List<UserSkillDbEntity> list){
         if(list != null){
             return list.stream().map(e -> new UserSkillDto(e.getId(), e.getUserId(), e.getPhaseId(), e.getName(), e.getLevel(), e.getComments())).collect(Collectors.toList());

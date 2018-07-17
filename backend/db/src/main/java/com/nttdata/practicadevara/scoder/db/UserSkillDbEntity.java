@@ -28,7 +28,7 @@ public class UserSkillDbEntity extends AbstractEntity implements Serializable {
     public static final String FILTER_BY_PHASE_ID_PARAM = "phaseId_param";
     public static final String FILTER_BY_NAME = "USER_SKILL_FILTER_BY_NAME";
     public static final String FILTER_BY_NAME_PARAM = "name_param";
-    
+   
     @Column(name = "USER_ID")
     private Long userId;
     

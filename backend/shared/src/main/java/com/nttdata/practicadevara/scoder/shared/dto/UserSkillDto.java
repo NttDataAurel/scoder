@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class UserSkillDto implements Serializable{
     private static final long serialVersionUID = 1537;
     
-    private Long id;
+    private Long id=null;
     private Long userId;
     private Long phaseId;
     private String name;
