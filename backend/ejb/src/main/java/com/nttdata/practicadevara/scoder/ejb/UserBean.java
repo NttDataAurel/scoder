@@ -53,14 +53,14 @@ public class UserBean {
     
     private List<UserDto> toDto(List<User> list){
         if(list != null){
-            return list.stream().map(e -> new UserDto(e.getId(), e.getname(), e.getsurname(), e.getaddress() , e.getphone() , e.getemail() , e.getfilename() , e.get_file() , e.getstate())).collect(Collectors.toList());
+            return list.stream().map(e -> new UserDto(e.getId(), e.getName(), e.getSurname(), e.getAddress() , e.getPhone() , e.getEmail() , e.getFilename() , e.get_file() , e.getState())).collect(Collectors.toList());
         }
         return Collections.EMPTY_LIST;
     }
     
     private UserDto toDto(User e){
         if(e != null){
-            return new UserDto(e.getId() , e.getname() , e.getsurname() , e.getaddress() , e.getphone() , e.getemail() , e.getfilename() , e.get_file() , e.getstate());
+            return new UserDto(e.getId() , e.getName() , e.getSurname() , e.getAddress() , e.getPhone() , e.getEmail() , e.getFilename() , e.get_file() , e.getState());
         }
         return null;
     }
@@ -68,14 +68,15 @@ public class UserBean {
     private User fromDto(UserDto dto){
         User e = new User();
         
-        e.setname(dto.getName());
-         e.setsurname(dto.getSurname());
-          e.setaddress(dto.getAddress());
-           e.setphone(dto.getPhone());
-            e.setemail(dto.getEmail());
-             e.setfilename(dto.getFilename());
+        e.setId(dto.getId());
+        e.setName(dto.getName());
+         e.setSurname(dto.getSurname());
+          e.setAddress(dto.getAddress());
+           e.setPhone(dto.getPhone());
+            e.setEmail(dto.getEmail());
+             e.setFilename(dto.getFilename());
               e.set_file(dto.getFile());
-               e.setstate(dto.getState());
+               e.setState(dto.getState());
         
         return e;
     }
