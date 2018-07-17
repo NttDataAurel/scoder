@@ -2,12 +2,14 @@ package com.nttdata.practicadevara.scoder.front.userskill;
 
 import com.nttdata.practicadevara.scoder.front.RestClient;
 import com.nttdata.practicadevara.scoder.shared.dto.UserSkillDto;
+import com.nttdata.practicadevara.scoder.shared.exception.BackendException;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.ClientErrorException;
 
 @Stateless
 @LocalBean
@@ -34,4 +36,24 @@ public class UserSkillRest extends RestClient {
         return ret;
     }
 
+    public List<UserSkillDto> filterByNameUserSkill(String filterByNameTxt) throws ClientErrorException {
+        Response resp = super.path("searchByName")
+                .queryParam("filterByName", filterByNameTxt)
+                .request(MediaType.APPLICATION_JSON)
+                .get(Response.class);
+        return resp.readEntity(new GenericType<List<UserSkillDto>>(){});
+    }
+    
+    public UserSkillDto update(UserSkillDto entry) throws ClientErrorException, BackendException {
+        Response resp = super.path("userskill").request(MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(entry, MediaType.APPLICATION_JSON), Response.class);
+        UserSkillDto ret = resp.readEntity(UserSkillDto.class);
+        return ret;
+    }
+    
+    public UserSkillDto create(UserSkillDto entry) throws ClientErrorException, BackendException {
+        Response resp = super.path("userskill").request(MediaType.APPLICATION_JSON).put(javax.ws.rs.client.Entity.entity(entry, MediaType.APPLICATION_JSON), Response.class);
+        UserSkillDto ret = resp.readEntity(UserSkillDto.class);
+        return ret;
+    }
+    
 }

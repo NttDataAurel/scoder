@@ -19,7 +19,8 @@ import javax.persistence.TemporalType;
         @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_USER_ID, query="SELECT e FROM UserPhaseResultDbEntity e WHERE e.userId=:"+UserPhaseResultDbEntity.USER_ID_PARAM),
         @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_PHASE_ID, query="SELECT e FROM UserPhaseResultDbEntity e WHERE e.phaseId=:"+UserPhaseResultDbEntity.PHASE_ID_PARAM),
         @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_RANKING, query="SELECT e FROM UserPhaseResultDbEntity e WHERE e.ranking>:"+UserPhaseResultDbEntity.RANKING_PARAM),
-        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_PASSED, query="SELECT e FROM UserPhaseResultDbEntity e WHERE e.passed=:"+UserPhaseResultDbEntity.PASSED_PARAM)
+        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_PASSED, query="SELECT e FROM UserPhaseResultDbEntity e WHERE e.passed=:"+UserPhaseResultDbEntity.PASSED_PARAM),
+        @NamedQuery(name = UserPhaseResultDbEntity.FILTER, query="SELECT e FROM UserPhaseResultDbEntity e WHERE e.ranking like :"+UserPhaseResultDbEntity.RANKING_PARAM)
 })
 
 public class UserPhaseResultDbEntity extends AbstractEntity implements Serializable {
@@ -32,6 +33,7 @@ public class UserPhaseResultDbEntity extends AbstractEntity implements Serializa
     public static final String FIND_BY_PHASE_ID="USER_PHASE_RESULT_FIND_BY_PHASE_ID_JPQL";
     public static final String FIND_BY_RANKING="USER_PHASE_RESULT_FIND_BY_RANKING_JPQL";
     public static final String FIND_BY_PASSED="USER_PHASE_RESULT_FIND_BY_PASSED_JPQL";
+    public static final String FILTER="USER_PHASE_RESULT_FILTER_JPQL";
     public static final String TBL_USER_PHASE_RESULT = "user_phase_result";
     public static final String FILTER_BY_KEY = "USER_PHASE_RESULT_FILTER_BY_KEY";
     public static final String FILTER_BY_KEY_PARAM = "key_param";
@@ -40,6 +42,7 @@ public class UserPhaseResultDbEntity extends AbstractEntity implements Serializa
     public static final String PHASE_ID_PARAM = "phase_id_param";
     public static final String RANKING_PARAM = "ranking_param";
     public static final String PASSED_PARAM = "passed_param";
+    public static final String FILTER_PARAM = "filter_param";
     
     @Temporal(TemporalType.DATE)
     @Column(name = "_DATE")

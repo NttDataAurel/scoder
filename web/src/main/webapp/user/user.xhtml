@@ -12,8 +12,15 @@
       
         <br/>
         <f:view>
+           <h:messages style="color:red;margin:8px;" showDetail="true" />
             
-            <h:form>
+            <h:form id="userFilterForm">
+                Filter: 
+                <h:inputText value="#{userMBean.filterText}"/> 
+                <h:commandLink value="Search" action="#{userMBean.filter}" type="submit"/>
+            </h:form>
+            <br/>
+            <h:form id="userForm">
                 <h:dataTable value="#{userMBean.users}"  var="user">
                     <h:column>
                         <f:facet name="header">ID</f:facet>
@@ -50,16 +57,33 @@
                     
                     <h:column>
                         <f:facet name="header">File</f:facet>
-                        <h:outputText value="#{user._file}"/>
+                        <h:outputText value="#{user.file}"/>
                     </h:column>
                     
                     <h:column>
                         <f:facet name="header">State</f:facet>
                         <h:outputText value="#{user.state}"/>
                     </h:column>
+                  
                     
-                </h:dataTable>
-            </h:form>
+                    
+                    <h:column>
+                        <f:facet name="header">Action</f:facet>
+                        <h:commandButton value="Edit" action="#{userMBean.startEdit}">
+                            <f:setPropertyActionListener value="#{user}" target="#{userMBean.selectedUser}"/>
+                        </h:commandButton>
+                            
+                        <h:commandButton value="Delete" action="#{userMBean.delete}">
+                            <f:setPropertyActionListener value="#{user}" target="#{userMBean.selectedUser}"/>
+                        </h:commandButton>
+                    </h:column>
+                    
+               </h:dataTable>
+             
+                    <h:dataTable>
+                <h:commandButton value="Create new user" action="#{userMBean.startCreate}"/>
+               </h:dataTable>
+          </h:form>
         </f:view> 
     </h:body>
 </html>

@@ -28,6 +28,7 @@ public class AppConfigBean {
         List<AppConfigDbEntity> entities = appConfigDbBean.filter(key);
         return toDto(entities);
     }
+    
     public AppConfigDto findById(Long id){
         AppConfigDbEntity entity = appConfigDbBean.findById(id);
         return toDto(entity);

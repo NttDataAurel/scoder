@@ -77,7 +77,7 @@ public class UserSkillBean {
         e.setPhaseId(dto.getPhaseId());
         e.setName(dto.getName());
         e.setLevel(dto.getLevel());
-        e.setPhaseId(dto.getLevel());
+        e.setComments(dto.getComments());
         return e;
     }
 
