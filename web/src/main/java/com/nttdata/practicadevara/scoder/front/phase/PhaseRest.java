@@ -39,4 +39,13 @@ public class PhaseRest extends RestClient {
         List<PhaseDto> ret = resp.readEntity(new GenericType<List<PhaseDto>>(){});
     }
 
+    public PhaseDto updatePhase(PhaseDto entry) throws javax.ws.rs.ClientErrorException{
+        Response resp = super.path("/phase/update").request(MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(entry, MediaType.APPLICATION_JSON), Response.class);
+        PhaseDto ret = resp.readEntity(PhaseDto.class);
+        return ret;
+    }
+    
+    public void deletePhase(PhaseDto entry) throws javax.ws.rs.ClientErrorException{
+        super.path("/phase/delete").queryParam("id", entry.getId()).request(MediaType.APPLICATION_JSON).delete(Response.class);
+    }
 }
