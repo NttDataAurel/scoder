@@ -37,7 +37,7 @@ public class UserSkillRest extends RestClient {
     }
 
     public List<UserSkillDto> filterByNameUserSkill(String filterByNameTxt) throws ClientErrorException {
-        Response resp = super.path("searchByName")
+        Response resp = super.path("userskill/searchByName")
                 .queryParam("filterByName", filterByNameTxt)
                 .request(MediaType.APPLICATION_JSON)
                 .get(Response.class);

@@ -23,8 +23,8 @@ public class UserSkillMBean implements Serializable{
     private UserSkillRest restClient;
     
     private UserSkillDto selectedUserSkill;
-    private String filterByNameTxt=null;
-    private List<UserSkillDto> list=null;
+    private String filterByNameTxt;
+    private List<UserSkillDto> list;
     private boolean isCreate;
     private boolean isEdit;
     private String comingFromViewIdUserSkill;
@@ -34,7 +34,7 @@ public UserSkillMBean() {
     
     public List<UserSkillDto> getUserSkills(){
         if(list == null) {
-            if(filterByNameTxt==null){
+            if(filterByNameTxt != null && filterByNameTxt.isEmpty()){
                 list = restClient.listUserSkill();
             } else {
                 list = restClient.filterByNameUserSkill(filterByNameTxt);
