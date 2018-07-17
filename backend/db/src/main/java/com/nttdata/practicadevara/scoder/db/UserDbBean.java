@@ -47,6 +47,12 @@ public class UserDbBean extends AbstractBean<User>{
         }
         User entity = findById(e.getId());
         entity.setName(e.getName());
+        entity.setSurname(e.getSurname());
+        entity.setAddress(e.getAddress());
+        entity.setPhone(e.getPhone());
+        entity.setEmail(e.getEmail());
+        entity.setFilename(e.getFilename());
+        entity.setState(e.getState());
         
         return super.update(entity);
     }

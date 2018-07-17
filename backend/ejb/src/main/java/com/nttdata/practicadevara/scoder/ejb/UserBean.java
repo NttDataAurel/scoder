@@ -53,14 +53,14 @@ public class UserBean {
     
     private List<UserDto> toDto(List<User> list){
         if(list != null){
-            return list.stream().map(e -> new UserDto(e.getId(), e.getName(), e.getSurname(), e.getAddress() , e.getPhone() , e.getEmail() , e.getFilename() , e.get_file() , e.getState())).collect(Collectors.toList());
+            return list.stream().map(e -> new UserDto(e.getId(), e.getName(), e.getSurname(), e.getAddress() , e.getPhone() , e.getEmail() , e.getFilename() , e.getfile() , e.getState())).collect(Collectors.toList());
         }
         return Collections.EMPTY_LIST;
     }
     
     private UserDto toDto(User e){
         if(e != null){
-            return new UserDto(e.getId() , e.getName() , e.getSurname() , e.getAddress() , e.getPhone() , e.getEmail() , e.getFilename() , e.get_file() , e.getState());
+            return new UserDto(e.getId() , e.getName() , e.getSurname() , e.getAddress() , e.getPhone() , e.getEmail() , e.getFilename() , e.getfile() , e.getState());
         }
         return null;
     }
@@ -75,7 +75,6 @@ public class UserBean {
            e.setPhone(dto.getPhone());
             e.setEmail(dto.getEmail());
              e.setFilename(dto.getFilename());
-              e.set_file(dto.getFile());
                e.setState(dto.getState());
         
         return e;
