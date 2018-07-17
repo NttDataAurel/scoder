@@ -15,11 +15,7 @@ public class UserDbBean extends AbstractBean<User>{
     public String findByIdNamedQuery(){
         return User.FIND_BY_ID;
     }
-    
-
-    
-   
-    
+       
     public List<User> filterByNameAndAddress(String name, String address) {
         String paramName = "%"+name+"%";
         String paramAddress = "%"+Address+"%";
@@ -29,7 +25,7 @@ public class UserDbBean extends AbstractBean<User>{
                 .getResultList();
     }
     
- public List<User> filterByNameOrSurname(String name, String surname) {
+    public List<User> filterByNameOrSurname(String name, String surname) {
         String paramName = "%"+name+"%";
         String paramSurname = "%"+surname+"%";
         return manager.createNamedQuery(User.FILTER_BY_NAME_OR_SURNAME)
@@ -38,6 +34,13 @@ public class UserDbBean extends AbstractBean<User>{
                 .getResultList();
     }
     
+     public List<User> filterById(Long id) {
+        String param = "%"+id+"%";
+        return manager.createNamedQuery(User.FIND_BY_ID)
+                .setParameter(User.PARAM_ID, param)
+                .getResultList();
+    }
+     
     public User update(User e) throws DBException {
         if(e == null){
             throw new DBException("Cannot update entity");

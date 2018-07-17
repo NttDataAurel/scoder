@@ -38,7 +38,8 @@ public class ServicesUser {
     
     @Context
     private UriInfo context;
-
+    
+    
     /**
      * Creates a new instance of WebServices
      */
@@ -55,7 +56,7 @@ public class ServicesUser {
     }
     
     @GET
-    @Path("/search")
+    @Path("/filterbynameandadress")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response filterByNameAndAddress(@DefaultValue("false") @QueryParam("name") String name,
@@ -66,17 +67,26 @@ public class ServicesUser {
     }
 
     @GET
-    @Path("/{id}")
+    @Path("/filterbynameorsurname")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response filterByNameOrSurname(@DefaultValue("false") @QueryParam("name") String name,
                                          @DefaultValue("false") @QueryParam("surname") String surname,
                                          @Context HttpServletRequest servletRequest) {
-        Long id = null;
+        List<UserDto> User = UserEjb.filterByNameOrSurname(name, surname);
+        return Response.ok(User).build();
+    }
+       
+    @GET
+    @Path("/findbyid")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response findById(@DefaultValue("0") @QueryParam("findById") Long id,
+                                       @Context HttpServletRequest servletRequest) {       
         UserDto User = UserEjb.findById(id);
         return Response.ok(User).build();
     }
-
+    
     @PUT
     //@Path("/")
     @Produces(MediaType.APPLICATION_JSON)

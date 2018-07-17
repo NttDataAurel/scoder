@@ -1,6 +1,7 @@
 package com.nttdata.practicadevara.scoder.shared.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class UserPhaseResultDto implements Serializable{
@@ -26,6 +27,10 @@ public class UserPhaseResultDto implements Serializable{
         this.comments = comments;
         this.ranking = ranking;
         this.passed = passed;
+    }
+
+    public UserPhaseResultDto(Long id, String name, String surname, String address, int phone, String email, String filename, String _file, int state) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public Long getId() {
@@ -82,6 +87,5 @@ public class UserPhaseResultDto implements Serializable{
     
     public void setPassed(boolean passed){
         this.passed = passed;
-    }
-
+    }  
 }

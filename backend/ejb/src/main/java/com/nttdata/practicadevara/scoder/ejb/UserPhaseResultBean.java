@@ -32,25 +32,7 @@ public class UserPhaseResultBean {
         return toDto(entities);
     }
     
-//    public List<UserPhaseResultDto> findByDate(Date date){
-//        List<UserPhaseResultDbEntity> entity = userPhaseResultDbBean.filterByDate(date);
-//        return toDto(entity);
-//    }
-//    
-//    public List<UserPhaseResultDto> findByUserId(Long userId){
-//        List<UserPhaseResultDbEntity> entity = userPhaseResultDbBean.filterByUserId(userId);
-//        return toDto(entity);
-//    }
-//    
-//    public List<UserPhaseResultDto> findByPhaseId(Long phaseId){
-//        List<UserPhaseResultDbEntity> entity = userPhaseResultDbBean.filterByPhaseId(phaseId);
-//        return toDto(entity);
-//    }
-//    
-//     public List<UserPhaseResultDto> findByRank(double rank){
-//        List<UserPhaseResultDbEntity> entity = userPhaseResultDbBean.filterByRank(rank);
-//        return toDto(entity);
-//    }
+
     
      public List<UserPhaseResultDto> findByPassed(boolean pass){
         List<UserPhaseResultDbEntity> entity = userPhaseResultDbBean.filterByPassed(pass);

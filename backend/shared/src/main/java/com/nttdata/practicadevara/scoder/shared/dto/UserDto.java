@@ -1,5 +1,8 @@
 package com.nttdata.practicadevara.scoder.shared.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  *
@@ -25,9 +28,13 @@ public class UserDto {
 
     private int state;
 
+    private List<UserPhaseResultDto> phaseResults = new ArrayList<>();
+
+
+    
     public UserDto() {
     }
-    
+   
     public UserDto(long id, String name, String surname, String address, int phone, String email, String filename, String file, int state) {
         this.id = id;
         this.name = name;
@@ -112,6 +119,14 @@ public class UserDto {
 
     public void setState(int state) {
         this.state = state;
+    }
+    
+    public List<UserPhaseResultDto> getPhaseResults() {
+        return phaseResults;
+    }
+
+    public void setPhaseResults(List<UserPhaseResultDto> phaseResults) {
+        this.phaseResults = phaseResults;
     }
 
 }
