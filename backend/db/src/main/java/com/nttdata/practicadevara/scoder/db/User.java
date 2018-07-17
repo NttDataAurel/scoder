@@ -71,51 +71,51 @@ public class User extends AbstractEntity implements Serializable {
 //Setter & getter
           
           
-    public String getname() {
+    public String getName() {
         return name;
     }
 
-    public void setname(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getsurname() {
+    public String getSurname() {
         return surname;
     }
 
-    public void setsurname(String surname) {
+    public void setSurname(String surname) {
         this.surname = surname;
     }
     
-    public String getaddress() {
+    public String getAddress() {
         return address;
     }
     
-     public void setaddress(String address) {
+     public void setAddress(String address) {
         this.address = address;
     }
      
-      public int getphone() {
+      public int getPhone() {
         return phone;
     }
     
-     public void setphone(int phone) {
+     public void setPhone(int phone) {
         this.phone = phone;
     }
      
-      public String getemail() {
+      public String getEmail() {
         return email;
     }
     
-     public void setemail(String email) {
+     public void setEmail(String email) {
         this.email = email;
     }
      
-        public String getfilename() {
+        public String getFilename() {
         return filename;
     }
     
-     public void setfilename(String filename) {
+     public void setFilename(String filename) {
         this.filename = filename;
     }
      
@@ -127,11 +127,11 @@ public class User extends AbstractEntity implements Serializable {
         this._file = _file;
     }
      
-     public int getstate() {
+     public int getState() {
         return state;
     }
     
-     public void setstate(int state) {
+     public void setState(int state) {
         this.state = state;
     }
      

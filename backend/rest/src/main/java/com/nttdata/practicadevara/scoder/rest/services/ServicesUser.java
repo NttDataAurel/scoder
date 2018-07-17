@@ -66,7 +66,7 @@ public class ServicesUser {
     }
 
     @GET
-    @Path("/{id}")
+    @Path("/{name}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response filterByNameOrSurname(@DefaultValue("false") @QueryParam("name") String name,

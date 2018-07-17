@@ -46,7 +46,7 @@ public class UserDbBean extends AbstractBean<User>{
             throw new DBException("Cannot update entity without id");
         }
         User entity = findById(e.getId());
-        entity.setname(e.getname());
+        entity.setName(e.getName());
         
         return super.update(entity);
     }

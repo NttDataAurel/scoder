@@ -1,6 +1,7 @@
 package com.nttdata.practicadevara.scoder.front.user;
 
 import com.nttdata.practicadevara.scoder.shared.dto.UserDto;
+import com.nttdata.practicadevara.scoder.shared.exception.BackendException;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
@@ -8,6 +9,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.ws.rs.ClientErrorException;
 
 @SessionScoped
 @Named("userMBean")
@@ -85,7 +87,7 @@ public class UserMBean  implements Serializable{
     public String edit(){
         try{
             restClient.update(selectedUser);
-        }catch(Exception e){
+        }catch(BackendException | ClientErrorException e){
             FacesContext.getCurrentInstance().addMessage("userForm", new FacesMessage("Error",e.getMessage()) );
         }
         selectedUser = null;
@@ -96,7 +98,7 @@ public class UserMBean  implements Serializable{
     public String create(){
         try{
             restClient.create(selectedUser);
-        }catch(Exception e){
+        }catch(BackendException | ClientErrorException e){
             FacesContext.getCurrentInstance().addMessage("userForm", new FacesMessage("Error",e.getMessage()) );
         }
         selectedUser = null;
