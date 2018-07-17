@@ -62,7 +62,7 @@ public class User extends AbstractEntity implements Serializable {
 
         
          @Column(name = "_file")
-    private String _file;
+    private String file;
 
          
           @Column(name = "state")
@@ -119,12 +119,12 @@ public class User extends AbstractEntity implements Serializable {
         this.filename = filename;
     }
      
-           public String get_file() {
-        return _file;
+           public String getfile() {
+        return file;
     }
     
-     public void set_file(String _file) {
-        this._file = _file;
+     public void set_file(String file) {
+        this.file = file;
     }
      
      public int getState() {
