@@ -15,7 +15,6 @@ import javax.ejb.EJB;
 import java.util.List;
 import javax.ws.rs.core.Response;
 
-
 import com.nttdata.practicadevara.scoder.shared.dto.UserDto;
 import com.nttdata.practicadevara.scoder.shared.exception.BackendException;
 import javax.ejb.LocalBean;
@@ -23,19 +22,20 @@ import javax.ejb.Stateless;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.POST;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 
 /**
- * REST Web Service
+ * REST Web Service for user
  */
 @Path("/user")
 @Stateless
 @LocalBean
 public class ServicesUser {
 
-    @EJB 
+    @EJB
     private UserBean UserEjb;
-    
+
     @Context
     private UriInfo context;
 
@@ -46,21 +46,20 @@ public class ServicesUser {
     }
 
     @GET
-    @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getUserValues() {
         List<UserDto> Users = UserEjb.list();
         return Response.ok(Users).build();
     }
-    
+
     @GET
     @Path("/search")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response filterByNameAndAddress(@DefaultValue("false") @QueryParam("name") String name,
-                                         @DefaultValue("false") @QueryParam("addr") String address,
-                                         @Context HttpServletRequest servletRequest) {
+    public Response filterByNameAndAddress(@DefaultValue("") @QueryParam("name") String name,
+            @DefaultValue("") @QueryParam("addr") String address,
+            @Context HttpServletRequest servletRequest) {
         List<UserDto> users = UserEjb.filterByNameAndAddress(name, address);
         return Response.ok(users).build();
     }
@@ -69,31 +68,27 @@ public class ServicesUser {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response filterByNameOrSurname(@DefaultValue("false") @QueryParam("name") String name,
-                                         @DefaultValue("false") @QueryParam("surname") String surname,
-                                         @Context HttpServletRequest servletRequest) {
-        Long id = null;
+    public Response getById(@PathParam("id") Long id,
+            @Context HttpServletRequest servletRequest) {
         UserDto User = UserEjb.findById(id);
         return Response.ok(User).build();
     }
 
     @PUT
-    //@Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response newUser(UserDto User) {
         UserDto res = UserEjb.create(User);
         return Response.ok(res).build();
     }
-    
+
     @POST
-    //@Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public UserDto updateUser(UserDto User) throws BackendException{
-        try{
+    public UserDto updateUser(UserDto User) throws BackendException {
+        try {
             return UserEjb.update(User);
-        }catch(DBException ex){
+        } catch (DBException ex) {
             throw new BackendException(ex.getMessage());
         }
     }

@@ -42,6 +42,8 @@ public abstract class AbstractBean<T extends AbstractEntity> {
         T entity = findById(id);
         if (entity != null) {
             manager.remove(entity);
+        } else {
+            throw new DBException("Entity with id = "+id +" was not found!");
         }
     }
 

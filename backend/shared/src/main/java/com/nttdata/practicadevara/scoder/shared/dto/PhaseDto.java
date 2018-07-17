@@ -8,12 +8,12 @@ public class PhaseDto implements Serializable{
     private Long id=null;
     private String name;
     private String description;
-    private String priority;
+    private Integer priority;
 
     public PhaseDto() {
     }
 
-    public PhaseDto(Long id, String name, String description, String priority) {
+    public PhaseDto(Long id, String name, String description, Integer priority) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -43,12 +43,12 @@ public class PhaseDto implements Serializable{
     public void setDescription(String description) {
         this.description = description;
     }
-    public String getPriority() {
+
+    public Integer getPriority() {
         return priority;
     }
 
-    public void setPriority(String priority) {
+    public void setPriority(Integer priority) {
         this.priority = priority;
     }
-    
 }

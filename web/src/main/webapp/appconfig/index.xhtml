@@ -2,12 +2,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Application Config</title>
     </h:head>
     <h:body>
-        <h1>AppConfig list</h1>
+        <ui:include src="/header.xhtml"/>
+        <h3>AppConfig list</h3>
         <br/>
         <f:view>
             <h:messages style="color:red;margin:8px;" showDetail="true" />
@@ -19,7 +21,7 @@
             </h:form>
             <br/>
             <h:form id="appConfigForm">
-                <h:dataTable value="#{appConfigMBean.appConfigs}"  var="appconfig"  rowClasses="rowOdd,rowEven" border="1" >
+                <h:dataTable value="#{appConfigMBean.appConfigs}"  var="appconfig"  rowClasses="rowOdd,rowEven"  >
                     <h:column>
                         <f:facet name="header">Id</f:facet>
                         <h:outputText value="#{appconfig.id}"/>
@@ -46,6 +48,7 @@
                 <h:commandButton value="Create new" action="#{appConfigMBean.startCreate}"/>
             </h:form>
         </f:view> 
+        <ui:include src="/goBack.xhtml"/>
     </h:body>
 </html>
 

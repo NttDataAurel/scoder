@@ -2,13 +2,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Application Config</title>
     </h:head>
     <h:body>
+        <ui:include src="/header.xhtml"/>
+        <h3>
         AppConfig   <h:outputText value="edit" rendered="#{appConfigMBean.isEdit}"/>
                     <h:outputText value="create" rendered="#{appConfigMBean.isCreate}"/>
+        </h3>
         <br/>
         <f:view>
             <h:form id="appConfigCreateOrEditForm">
@@ -20,6 +24,7 @@
                 <h:commandButton value="Create" action="#{appConfigMBean.create}" rendered="#{appConfigMBean.isCreate}"/>
             </h:form>
         </f:view> 
+        <ui:include src="/goBack.xhtml"/>
     </h:body>
 </html>
 

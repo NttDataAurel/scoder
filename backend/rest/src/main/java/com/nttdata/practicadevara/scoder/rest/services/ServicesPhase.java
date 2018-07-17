@@ -43,7 +43,6 @@ public class ServicesPhase {
     }
 
     @GET
-    @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getPhaseValues() {
@@ -65,34 +64,13 @@ public class ServicesPhase {
     @Path("/prioritysearch")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response filterPriorityPhaseValues(@DefaultValue("") @QueryParam("filterPriority") String filterTxt,
+    public Response filterPriorityPhaseValues(@DefaultValue("") @QueryParam("filterPriority") Integer filterPriority,
                                         @Context HttpServletRequest servletRequest) {
-        List<PhaseDto> phasesPriority = phaseEjb.filterPriority(filterTxt);
+        List<PhaseDto> phasesPriority = phaseEjb.filterPriority(filterPriority);
         return Response.ok(phasesPriority).build();
-    }
-    
-    @GET
-    @Path("/nameselect")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response selectNamePhaseValues(@DefaultValue("") @QueryParam("selectByName") String filterTxt,
-                                        @Context HttpServletRequest servletRequest) {
-        List<PhaseDto> phasesSName = phaseEjb.filterPriority(filterTxt);
-        return Response.ok(phasesSName).build();
-    }
-    
-    @GET
-    @Path("/priorityselect")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response selectPriorityPhaseValues(@DefaultValue("") @QueryParam("selectByPriority") String filterTxt,
-                                        @Context HttpServletRequest servletRequest) {
-        List<PhaseDto> phasesSPriority = phaseEjb.filterPriority(filterTxt);
-        return Response.ok(phasesSPriority).build();
     }
 
     @PUT
-    //@Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public void createPhase(PhaseDto phase) {
@@ -100,7 +78,6 @@ public class ServicesPhase {
     }
     
     @POST
-    @Path("/update")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public void updatePhase(PhaseDto phase) throws DBException {
@@ -108,7 +85,6 @@ public class ServicesPhase {
     }
     
     @DELETE
-    @Path("/delete")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public void deletePhase(@DefaultValue("") @QueryParam("id")  Long id) throws DBException {

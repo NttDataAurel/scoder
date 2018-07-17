@@ -5,8 +5,8 @@ import javax.ejb.LocalBean;
 import java.util.List;
 
 import com.nttdata.practicadevara.scoder.shared.dto.PhaseDto;
-import com.nttdata.practicadevara.scoder.db.PhaseDbEntity;
-import com.nttdata.practicadevara.scoder.db.PhaseDbBean;
+import com.nttdata.practicadevara.scoder.db.phase.PhaseDbEntity;
+import com.nttdata.practicadevara.scoder.db.phase.PhaseDbBean;
 import com.nttdata.practicadevara.scoder.db.DBException;
 import java.util.Collections;
 import java.util.stream.Collectors;
@@ -29,8 +29,8 @@ public class PhaseBean {
         return toDto(entities);
     }
     
-    public List<PhaseDto> filterPriority(String priority){
-        List<PhaseDbEntity> entities = phaseDbBean.filterName(priority);
+    public List<PhaseDto> filterPriority(Integer priority){
+        List<PhaseDbEntity> entities = phaseDbBean.filterPriority(priority);
         return toDto(entities);
     }
     

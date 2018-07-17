@@ -9,21 +9,17 @@
         <title>Skilled Coder</title>
     </h:head>
     <h:body>
-        ****
+        <ui:include src="/header.xhtml"/>
         <br/>
-        <ui:include src="appconfig/index.xhtml"/>
-        ***
-        <br/>
-        <ui:include src="phase/index.xhtml"/>
-        ***
-        <br/>
-        <ui:include src="userskill/index.xhtml"/>
-        ***
-        <br/>
-        <ui:include src="userphaseresult/index.xhtml"/>
-         ***
-        <br/>
-        <ui:include src="user/user.xhtml"/>
+        <f:view id="masterindex">
+            <h:form id="masterForm">
+                <h:commandButton value="App settings" action="/appconfig/index" type="submit"/>
+                <h:commandButton value="Phases" action="/phase/index" type="submit"/>
+                <h:commandButton value="Users" action="/user/index" type="submit"/>
+                <h:commandButton value="User Skills" action="/userskill/index" type="submit"/>
+                <h:commandButton value="User Interview Status" action="/userphaseresult/index" type="submit"/>
+            </h:form>
+        </f:view>
         
     </h:body>
 </html>

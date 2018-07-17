@@ -5,8 +5,8 @@ import javax.ejb.LocalBean;
 import java.util.List;
 
 import com.nttdata.practicadevara.scoder.shared.dto.AppConfigDto;
-import com.nttdata.practicadevara.scoder.db.AppConfigDbEntity;
-import com.nttdata.practicadevara.scoder.db.AppConfigDbBean;
+import com.nttdata.practicadevara.scoder.db.appconfig.AppConfigDbEntity;
+import com.nttdata.practicadevara.scoder.db.appconfig.AppConfigDbBean;
 import com.nttdata.practicadevara.scoder.db.DBException;
 import java.util.Collections;
 import java.util.stream.Collectors;
@@ -44,6 +44,10 @@ public class AppConfigBean {
         AppConfigDbEntity e = fromDto(dto);
         AppConfigDbEntity entity = appConfigDbBean.update(e);
         return toDto(entity);
+    }
+
+    public void delete(Long id) throws DBException {
+        appConfigDbBean.delete(id);
     }
     
     private List<AppConfigDto> toDto(List<AppConfigDbEntity> list){

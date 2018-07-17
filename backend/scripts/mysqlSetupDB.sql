@@ -1,17 +1,93 @@
 use scoderdb;
 
+drop table if exists app_config;
+
+drop table if exists user_skill;
+drop table if exists user_phase_result;
+drop table if exists user_email;
+drop table if exists phase;
+drop table if exists user;
+
 CREATE TABLE if not exists APP_CONFIG
-( ID MEDIUMINT NOT NULL AUTO_INCREMENT,
+( ID BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   _KEY VARCHAR(255) NOT NULL,
   _VALUE VARCHAR(255) DEFAULT NULL,
   PRIMARY KEY(ID)
-);
+) 
+ENGINE=InnoDB;
 
 INSERT INTO `app_config` (`_KEY`, `_VALUE`) VALUES
-   ('PHASE_PRIO_0', '0'),
-   ('PHASE_PRIO_1', '4'),
-   ('PHASE_PRIO_2', '4'),
+	('PHASE_1_MIN_RANK', '0'),
+	('PHASE_2_MIN_RANK', '6'),
+	('PHASE_3_MIN_RANK', '6'),
 	('SKILL_1', 'JAVA'),
 	('SKILL_2', 'JAVA_EE'),
 	('SKILL_3', 'JAVASCRIPT'),
-	('SKILL_4', 'ANGULAR_JS');
+	('SKILL_4', 'ANGULAR_JS'),
+	('SKILL_5', 'MySQL'),
+	('SKILL_6', 'OracleDB'),
+	('SKILL_7', 'PostgreSQL'),
+	('SKILL_8', 'IBM DB2'),
+	('SKILL_9', 'Visual C++'),
+	('SKILL_10', 'C#'),
+	('SKILL_11', '.NET')
+	;
+
+CREATE TABLE `phase` (
+	`id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(60) NOT NULL,
+	`description` TEXT NOT NULL,
+	`priority` INT(4) NOT NULL,
+	PRIMARY KEY (`id`)
+)
+ENGINE=InnoDB;
+
+INSERT INTO `phase` (`id`, `name`, `description`, `priority`) VALUES
+	(1, 'Human Resources', 'resurse umane', '1'),
+	(2, 'Tehnic', 'personalul de la tehnic', '2'),
+	(3, 'Clienti', 'interviu cu posibili clienti ai firmei', '3');
+	
+CREATE TABLE `user` (
+	`id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(32) NULL DEFAULT NULL,
+	`surname` VARCHAR(32) NULL DEFAULT NULL,
+	`address` VARCHAR(32) NULL DEFAULT NULL,
+	`phone` VARCHAR(50) NULL DEFAULT NULL,
+	`email` VARCHAR(64) NULL DEFAULT NULL,
+	`filename` VARCHAR(256) NULL DEFAULT NULL,
+	`filedata` BLOB NULL,
+	`state` INT(11) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`)
+)
+ENGINE=InnoDB;
+
+CREATE TABLE `user_phase_result` (
+	`ID` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`_DATE` DATE NOT NULL,
+	`USER_ID` BIGINT(20) UNSIGNED NOT NULL,
+	`PHASE_ID` BIGINT(20) UNSIGNED NOT NULL,
+	`COMMENTS` VARCHAR(1024) NULL DEFAULT NULL,
+	`RANKING` SMALLINT(6) NULL DEFAULT NULL,
+	`PASSED` VARCHAR(16) NOT NULL,
+	PRIMARY KEY (`ID`),
+	INDEX `FK_PHASE_ID` (`PHASE_ID`),
+	INDEX `FK_USER_ID` (`USER_ID`),
+	CONSTRAINT `FK_PHASE_ID` FOREIGN KEY (`PHASE_ID`) REFERENCES `phase` (`id`),
+	CONSTRAINT `FK_USER_ID` FOREIGN KEY (`USER_ID`) REFERENCES `user` (`id`)
+)
+ENGINE=InnoDB;
+
+CREATE TABLE `user_skill` (
+	`ID` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`USER_ID` BIGINT(20) UNSIGNED NOT NULL,
+	`PHASE_ID` BIGINT(20) UNSIGNED NOT NULL,
+	`NAME` VARCHAR(128) NOT NULL,
+	`LEVEL` BIGINT(20) NOT NULL DEFAULT '0',
+	`COMMENTS` VARCHAR(1024) NULL DEFAULT NULL,
+	PRIMARY KEY (`ID`),
+	INDEX `FK_USER_SKILL_USER_ID` (`USER_ID`),
+	INDEX `FK_USER_SKILL_PHASE_ID` (`PHASE_ID`),
+	CONSTRAINT `FK_USER_SKILL_PHASE_ID` FOREIGN KEY (`PHASE_ID`) REFERENCES `phase` (`id`),
+	CONSTRAINT `FK_USER_SKILL_USER_ID` FOREIGN KEY (`USER_ID`) REFERENCES `user` (`id`)
+)
+ENGINE=InnoDB;

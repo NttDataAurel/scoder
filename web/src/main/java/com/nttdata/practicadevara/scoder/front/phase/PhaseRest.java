@@ -12,24 +12,9 @@ import javax.ws.rs.core.Response;
 @Stateless
 @LocalBean
 public class PhaseRest extends RestClient {
-    
-    
-//    public <T> T updateAppConfig(Object requestEntity, Class<T> responseType) throws javax.ws.rs.ClientErrorException {
-//        return webTarget.path("appconfig").request(MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(requestEntity, MediaType.APPLICATION_JSON), responseType);
-//    }
-//
-//    public <T> T filterAppConfigValues(Class<T> responseType, String id) throws javax.ws.rs.ClientErrorException {
-//        WebTarget resource = webTarget;
-//        resource = resource.path(java.text.MessageFormat.format("appconfig/{0}", new Object[]{id}));
-//        return resource.request(MediaType.APPLICATION_JSON).get(responseType);
-//    }
-//
-//    public Response newAppConfig(Object requestEntity) throws javax.ws.rs.ClientErrorException {
-//        return webTarget.path("appconfig").request(MediaType.APPLICATION_JSON).put(javax.ws.rs.client.Entity.entity(requestEntity, MediaType.APPLICATION_JSON), Response.class);
-//    }
 
     public List<PhaseDto> listPhase() throws javax.ws.rs.ClientErrorException {
-        Response resp = super.path("phase/list").request(MediaType.APPLICATION_JSON).get(Response.class);
+        Response resp = super.path("phase").request(MediaType.APPLICATION_JSON).get(Response.class);
         List<PhaseDto> ret = resp.readEntity(new GenericType<List<PhaseDto>>(){});
         return ret;
     }
@@ -40,12 +25,12 @@ public class PhaseRest extends RestClient {
     }
 
     public PhaseDto updatePhase(PhaseDto entry) throws javax.ws.rs.ClientErrorException{
-        Response resp = super.path("phase/update").request(MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(entry, MediaType.APPLICATION_JSON), Response.class);
+        Response resp = super.path("phase").request(MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(entry, MediaType.APPLICATION_JSON), Response.class);
         PhaseDto ret = resp.readEntity(PhaseDto.class);
         return ret;
     }
     
     public void deletePhase(PhaseDto entry) throws javax.ws.rs.ClientErrorException{
-        super.path("phase/delete").queryParam("id", entry.getId()).request(MediaType.APPLICATION_JSON).delete(Response.class);
+        super.path("phase").queryParam("id", entry.getId()).request(MediaType.APPLICATION_JSON).delete(Response.class);
     }
 }

@@ -34,10 +34,10 @@ public class AppConfigMBean implements Serializable{
     
     public List<AppConfigDto> getAppConfigs(){
         if(list == null) {
-            if(filterText != null && filterText.isEmpty()){
-                list = restClient.listAppConfig();
-            } else {
+            if(filterText != null && !filterText.isEmpty()){
                 list = restClient.filterAppConfig(filterText);
+            } else {
+                list = restClient.listAppConfig();
             }
         }
         return list;

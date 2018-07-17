@@ -2,15 +2,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
-        <title>Phase's Editation</title>
+        <title>Phases</title>
     </h:head>
     <h:body>
-        Phase list
-        <br/>
+        <ui:include src="/header.xhtml"/>
         <f:view>
-            <h:form>
+            <h:form styleClass="bordered">
+                <h3> Phase list </h3>
                 <h:dataTable value="#{phaseMBean.phases}"  var="phase"  rowClasses="rowOdd,rowEven">
                     <h:column>
                         <f:facet name="header">Id</f:facet>
@@ -39,8 +40,9 @@
                     </h:column>
                 </h:dataTable>
             </h:form>
-            <h:form>
-                <label>New Phase</label>
+            <div class="separator"> </div>
+            <h:form styleClass="bordered">
+                <label><h3>New Phase</h3></label>
                 <h:panelGrid columns="2">
                 <h:outputText value="Phase's Name"/>
                 <h:inputText id="phase_name" value="#{phaseMBean.newPhase.name}" validatorMessage="Introduce a diffrent name then the original one"/>
@@ -53,6 +55,7 @@
                 </h:panelGrid>
             </h:form>
         </f:view> 
+        <ui:include src="/goBack.xhtml"/>
     </h:body>
 </html>
 

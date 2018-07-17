@@ -31,13 +31,13 @@ public class AppConfigRest extends RestClient {
 //    }
 
     public List<AppConfigDto> listAppConfig() throws ClientErrorException {
-        Response resp = super.path("appconfiglist").request(MediaType.APPLICATION_JSON).get(Response.class);
+        Response resp = super.path("appconfig").request(MediaType.APPLICATION_JSON).get(Response.class);
         List<AppConfigDto> ret = resp.readEntity(new GenericType<List<AppConfigDto>>(){});
         return ret;
     }
     
     public List<AppConfigDto> filterAppConfig(String text) throws ClientErrorException {
-        Response resp = super.path("appconfigsearch")
+        Response resp = super.path("appconfig/search")
                 .queryParam("filter", text)
                 .request(MediaType.APPLICATION_JSON)
                 .get(Response.class);

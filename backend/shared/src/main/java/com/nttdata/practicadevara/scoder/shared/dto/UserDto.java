@@ -1,6 +1,5 @@
 package com.nttdata.practicadevara.scoder.shared.dto;
 
-
 /**
  *
  * @author bogdan.rebegel
@@ -15,28 +14,28 @@ public class UserDto {
 
     private String address;
 
-    private int phone;
+    private String phone;
 
     private String email;
 
-    private String filename;
+    private String fileName;
 
-    private String file;
+    private byte[] fileData;
 
     private int state;
 
     public UserDto() {
     }
     
-    public UserDto(long id, String name, String surname, String address, int phone, String email, String filename, String file, int state) {
+    public UserDto(long id, String name, String surname, String address, String phone, String email, String fileName, byte[] fileData, int state) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.address = address;
         this.phone = phone;
         this.email = email;
-        this.filename = filename;
-        this.file = file;
+        this.fileName = fileName;
+        this.fileData = fileData;
         this.state = state;
     }
  
@@ -74,11 +73,11 @@ public class UserDto {
         this.address = address;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -90,20 +89,20 @@ public class UserDto {
         this.email = email;
     }
 
-    public String getFilename() {
-        return filename;
+    public String getFileName() {
+        return fileName;
     }
 
-    public void setFilename(String filename) {
-        this.filename = filename;
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
-    public String getFile() {
-        return file;
+    public byte[] getFileData() {
+        return fileData;
     }
 
-    public void setFile(String file) {
-        this.file = file;
+    public void setFileData(byte[] fileData) {
+        this.fileData = fileData;
     }
 
     public int getState() {

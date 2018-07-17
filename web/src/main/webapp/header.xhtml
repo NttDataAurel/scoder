@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <h:head>
+        <style type="text/css">
+            table { border-collapse: collapse; border: 0px;}
+            th, td {  border-bottom: 1px solid #ddd; padding: 5px 5px 5px 25px;   text-align: left;}
+            tr:hover {background-color: #f5f5f5;}
+            th {background-color: #c8c8c8;}
+            a {padding-left: 10px;}
+            .bordered {border: 1px #c0c0c0 solid; padding: 10px}
+            div.separator {height: 20px;}
+        </style>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'/>
+   </h:head>
+    <f:view id="header">
+        <h:form id="headerForm">
+            <h1 style="font-family: Montserrat;">
+                <h:commandLink value="Skilled-Coder" action="/index" type="submit" style="text-decoration: none; color: mediumblue"/>
+            </h1>
+            <h3 style="font-family: Montserrat;">Practica de vara 2018 - NTT Data Sibiu</h3>
+            <hr/>
+        </h:form>
+    </f:view>
+</html>
