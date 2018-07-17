@@ -29,23 +29,23 @@ public class PhaseRest extends RestClient {
 //    }
 
     public List<PhaseDto> listPhase() throws javax.ws.rs.ClientErrorException {
-        Response resp = super.path("/phase/list").request(MediaType.APPLICATION_JSON).get(Response.class);
+        Response resp = super.path("phase/list").request(MediaType.APPLICATION_JSON).get(Response.class);
         List<PhaseDto> ret = resp.readEntity(new GenericType<List<PhaseDto>>(){});
         return ret;
     }
     
     public void createPhase(PhaseDto phase) throws javax.ws.rs.ClientErrorException {
-        Response resp=super.path("/phase").request(MediaType.APPLICATION_JSON).put(javax.ws.rs.client.Entity.entity(phase, MediaType.APPLICATION_JSON), Response.class);
+        Response resp=super.path("phase").request(MediaType.APPLICATION_JSON).put(javax.ws.rs.client.Entity.entity(phase, MediaType.APPLICATION_JSON), Response.class);
         List<PhaseDto> ret = resp.readEntity(new GenericType<List<PhaseDto>>(){});
     }
 
     public PhaseDto updatePhase(PhaseDto entry) throws javax.ws.rs.ClientErrorException{
-        Response resp = super.path("/phase/update").request(MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(entry, MediaType.APPLICATION_JSON), Response.class);
+        Response resp = super.path("phase/update").request(MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(entry, MediaType.APPLICATION_JSON), Response.class);
         PhaseDto ret = resp.readEntity(PhaseDto.class);
         return ret;
     }
     
     public void deletePhase(PhaseDto entry) throws javax.ws.rs.ClientErrorException{
-        super.path("/phase/delete").queryParam("id", entry.getId()).request(MediaType.APPLICATION_JSON).delete(Response.class);
+        super.path("phase/delete").queryParam("id", entry.getId()).request(MediaType.APPLICATION_JSON).delete(Response.class);
     }
 }
