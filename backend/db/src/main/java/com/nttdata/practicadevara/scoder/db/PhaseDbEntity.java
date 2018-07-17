@@ -11,6 +11,7 @@ import javax.persistence.Table;
 @Table(name = PhaseDbEntity.TBL_PHASE, schema = AbstractBean.SCHEMA_NAME)
 @NamedQueries({
         @NamedQuery(name = PhaseDbEntity.FIND_ALL, query = "SELECT e FROM PhaseDbEntity e"),
+        @NamedQuery(name = PhaseDbEntity.FIND_BY_ID, query = "SELECT e FROM PhaseDbEntity e WHERE e.id=:"+AbstractBean.ID_PARAM),
         @NamedQuery(name = PhaseDbEntity.SELECT_BY_NAME, query = "SELECT e FROM PhaseDbEntity e WHERE e.name=:"+ PhaseDbEntity.PARAM_BY_NAME),
         @NamedQuery(name = PhaseDbEntity.SELECT_BY_PRIORITY, query = "SELECT e FROM PhaseDbEntity e WHERE e.priority=:"+ PhaseDbEntity.PARAM_BY_NAME),
         @NamedQuery(name = PhaseDbEntity.DELETE_BY_NAME, query = "DELETE FROM PhaseDbEntity e WHERE e.name=:"+ PhaseDbEntity.PARAM_BY_NAME)
@@ -19,12 +20,14 @@ public class PhaseDbEntity extends AbstractEntity implements Serializable {
     private static final long serialVersionUID = 117223295272084434L;
     
     public static final String FIND_ALL = "FIND_ALL_PHASES_JPQL";
+    public static final String FIND_BY_ID = "FIND_BY_ID_PHASES_JPQL";
     public static final String SELECT_BY_NAME = "SELECT_PHASES_BY_NAME_JPQL";
     public static final String SELECT_BY_PRIORITY = "SELECT_PHASES_BY_PRIORITY_JPQL";
     public static final String TBL_PHASE = "phase";
     public static final String DELETE_BY_NAME = "DELETE_PHASES_BY_NAME";
     public static final String FILTER_BY_KEY_PARAM = "phase_key_param";
     public static final String PARAM_BY_NAME = "PARAM_PHASES_BY_NAME";
+    public static final String PARAM_BY_ID = "PARAM_PHASES_BY_ID";
     
     @Column(name = "name")
     private String name;

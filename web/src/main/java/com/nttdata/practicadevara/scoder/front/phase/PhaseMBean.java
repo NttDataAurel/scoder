@@ -1,19 +1,23 @@
 package com.nttdata.practicadevara.scoder.front.phase;
 
 import com.nttdata.practicadevara.scoder.shared.dto.PhaseDto;
+import com.nttdata.practicadevara.scoder.shared.exception.BackendException;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
-@RequestScoped
+@SessionScoped
 @Named("phaseMBean")
-public class PhaseMBean {
+public class PhaseMBean implements Serializable{
+    private static final long serialVersionUID = 1015;
     private PhaseDto newPhase=new PhaseDto();
-    private static final String INDEX_XHTML="index";
-    private static final String PHASE_EDIT_XHTML="editPhase";
+    private static final String INDEX_XHTML="/phase/index";
+    private static final String PHASE_EDIT_XHTML="/phase/phaseEdit";
+    private String comingFromViewId;
     private PhaseDto selectedPhase;
     private String oldPhase;
     
@@ -49,7 +53,18 @@ public class PhaseMBean {
         this.selectedPhase=selectedPhase;
     }
     
+    private void pushPageComingFrom(){
+        comingFromViewId = FacesContext.getCurrentInstance().getViewRoot().getViewId();
+    }
+    
+    private String popPageComingFrom(){
+        String pageId = comingFromViewId != null ? comingFromViewId : INDEX_XHTML;
+        comingFromViewId = null;
+        return pageId;
+    }
+    
     public String editPhase(){
+        pushPageComingFrom();
         return PHASE_EDIT_XHTML;
     }
     
@@ -57,19 +72,19 @@ public class PhaseMBean {
         try{
             restClient.updatePhase(selectedPhase);
         }catch(Exception e){
-            FacesContext.getCurrentInstance().addMessage("appConfigForm", new FacesMessage("Error",e.getMessage()) );
+            FacesContext.getCurrentInstance().addMessage("phaseForm", new FacesMessage("Error",e.getMessage()) );
         }
         selectedPhase = null;
-        return INDEX_XHTML;
+        return popPageComingFrom();
     }
     
     public void deletePhase(){
-//        try {newPhase = new PhaseDto();
-           // restClient.deletePhase(oldPhase);
-           // oldPhase = ;
-//        }catch(BackendException ex){
-//            //todo afisare eroare
-//        }
+        try{
+            restClient.deletePhase(selectedPhase);
+        }
+        catch(Exception e){
+        FacesContext.getCurrentInstance().addMessage("phaseForm", new FacesMessage("Error","Delete method not yet implemented") ); 
+        }
     }
     
     public PhaseDto getNewPhase() {

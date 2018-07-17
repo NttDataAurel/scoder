@@ -56,10 +56,8 @@ public class PhaseBean {
         return toDto(entity);
     }
     
-    public PhaseDto deletePhase(PhaseDto dto) throws DBException {
-        PhaseDbEntity e = fromDto(dto);
-        PhaseDbEntity entity = phaseDbBean.deletePhase(e);
-        return toDto(entity);
+    public void deletePhase(Long id) throws DBException {
+        phaseDbBean.delete(id);
     }
     
     private List<PhaseDto> toDto(List<PhaseDbEntity> list){

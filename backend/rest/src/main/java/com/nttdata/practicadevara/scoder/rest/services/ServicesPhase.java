@@ -100,6 +100,7 @@ public class ServicesPhase {
     }
     
     @POST
+    @Path("/update")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public void updatePhase(PhaseDto phase) throws DBException {
@@ -110,8 +111,8 @@ public class ServicesPhase {
     @Path("/delete")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public void deletePhase(PhaseDto phase) throws DBException {
-        phaseEjb.deletePhase(phase);
+    public void deletePhase(@DefaultValue("") @QueryParam("id")  Long id) throws DBException {
+        phaseEjb.deletePhase(id);
     }
 }
 

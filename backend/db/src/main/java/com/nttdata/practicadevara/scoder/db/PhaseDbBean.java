@@ -66,14 +66,10 @@ public class PhaseDbBean extends AbstractBean<PhaseDbEntity>{
             manager.remove(entity);
         }
     }
-   
+    
     @Override
     public String findByIdNamedQuery() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public PhaseDbEntity deletePhase(PhaseDbEntity e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return PhaseDbEntity.FIND_BY_ID;
     }
     
 }
