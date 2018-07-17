@@ -1,5 +1,6 @@
 package com.nttdata.practicadevara.scoder.ejb;
 
+import com.nttdata.practicadevara.scoder.db.AppConfigDbEntity;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 import java.util.List;
@@ -8,6 +9,7 @@ import com.nttdata.practicadevara.scoder.shared.dto.UserPhaseResultDto;
 import com.nttdata.practicadevara.scoder.db.UserPhaseResultDbEntity;
 import com.nttdata.practicadevara.scoder.db.UserPhaseResultDbBean;
 import com.nttdata.practicadevara.scoder.db.DBException;
+import com.nttdata.practicadevara.scoder.shared.dto.AppConfigDto;
 import java.util.Collections;
 import java.util.Date;
 import java.util.stream.Collectors;
@@ -25,25 +27,30 @@ public class UserPhaseResultBean {
         return toDto(entities);
     }
     
-    public List<UserPhaseResultDto> findByDate(Date date){
-        List<UserPhaseResultDbEntity> entity = userPhaseResultDbBean.filterByDate(date);
-        return toDto(entity);
+     public List<UserPhaseResultDto> filter(String sfilter){
+        List<UserPhaseResultDbEntity> entities = userPhaseResultDbBean.filter(sfilter);
+        return toDto(entities);
     }
     
-    public List<UserPhaseResultDto> findByUserId(Long userId){
-        List<UserPhaseResultDbEntity> entity = userPhaseResultDbBean.filterByUserId(userId);
-        return toDto(entity);
-    }
-    
-    public List<UserPhaseResultDto> findByPhaseId(Long phaseId){
-        List<UserPhaseResultDbEntity> entity = userPhaseResultDbBean.filterByPhaseId(phaseId);
-        return toDto(entity);
-    }
-    
-     public List<UserPhaseResultDto> findByRank(double rank){
-        List<UserPhaseResultDbEntity> entity = userPhaseResultDbBean.filterByRank(rank);
-        return toDto(entity);
-    }
+//    public List<UserPhaseResultDto> findByDate(Date date){
+//        List<UserPhaseResultDbEntity> entity = userPhaseResultDbBean.filterByDate(date);
+//        return toDto(entity);
+//    }
+//    
+//    public List<UserPhaseResultDto> findByUserId(Long userId){
+//        List<UserPhaseResultDbEntity> entity = userPhaseResultDbBean.filterByUserId(userId);
+//        return toDto(entity);
+//    }
+//    
+//    public List<UserPhaseResultDto> findByPhaseId(Long phaseId){
+//        List<UserPhaseResultDbEntity> entity = userPhaseResultDbBean.filterByPhaseId(phaseId);
+//        return toDto(entity);
+//    }
+//    
+//     public List<UserPhaseResultDto> findByRank(double rank){
+//        List<UserPhaseResultDbEntity> entity = userPhaseResultDbBean.filterByRank(rank);
+//        return toDto(entity);
+//    }
     
      public List<UserPhaseResultDto> findByPassed(boolean pass){
         List<UserPhaseResultDbEntity> entity = userPhaseResultDbBean.filterByPassed(pass);

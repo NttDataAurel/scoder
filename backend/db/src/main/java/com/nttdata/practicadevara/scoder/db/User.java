@@ -137,6 +137,10 @@ public class User extends AbstractEntity implements Serializable {
      
      
      
+     
+     
+     
+     
     
     @Override
     public int hashCode() {
