@@ -21,7 +21,7 @@ import javax.persistence.OneToMany;
 @NamedQueries({
     @NamedQuery(name = UserDbEntity.FIND_ALL, query = "SELECT e FROM UserDbEntity e")
     ,@NamedQuery(name = UserDbEntity.FIND_BY_ID, query = "SELECT e FROM UserDbEntity e WHERE e.id = :" + AbstractBean.ID_PARAM)
-    ,@NamedQuery(name = UserDbEntity.FILTER_BY_NAME_AND_ADDRESS, query = "SELECT e FROM UserDbEntity e WHERE "
+    ,@NamedQuery(name = UserDbEntity.FILTER_BY_NAME_AND_ADDRESS, query = "SELECT e FROM UserDbEntity e WHERE "                              //<------
                + "( e.name like :" + UserDbEntity.PARAM_NAME + " or e.surname like :" + UserDbEntity.PARAM_SURNAME + ") "
                + " and e.address like :" + UserDbEntity.PARAM_ADDRESS)
     ,@NamedQuery(name = UserDbEntity.FILTER_BY_NAME_OR_SURNAME, query = "SELECT e FROM UserDbEntity e WHERE e.name like :" + UserDbEntity.PARAM_NAME + " or e.surname like :" + UserDbEntity.PARAM_SURNAME)
@@ -66,7 +66,7 @@ public class UserDbEntity extends AbstractEntity implements Serializable {
     @Column(name = "state")
     private int state;
     
-    @OneToMany(mappedBy = "user", cascade = {PERSIST, MERGE, REFRESH})
+    @OneToMany(mappedBy = "user", cascade = {PERSIST, MERGE, REFRESH})                                  //<-------------------
     private List<UserPhaseResultDbEntity> phaseResults = new ArrayList<>();
 
     public String getName() {
