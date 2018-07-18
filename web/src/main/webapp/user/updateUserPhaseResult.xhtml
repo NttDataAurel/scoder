@@ -24,10 +24,10 @@
                         <tr valign="top">
                             <td>
                                 <h:inputText value="#{phaseResult.date}">
-                                    <f:convertDateTime pattern="dd.MM.yyyy" />
+                                    <f:convertDateTime pattern="d-M-yyyy" />
                                 </h:inputText>
                             </td>
-                            
+                          
                             <td><h:selectOneMenu value="#{phaseResult.phaseId}">
                                     <f:selectItems value="#{userMBean.phasesDto}" var="phaseDto" itemLabel="#{phaseDto.name}" itemValue="#{phaseDto.id}" />
                                 </h:selectOneMenu>

@@ -12,6 +12,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 @Entity
@@ -67,6 +69,17 @@ public class UserPhaseResultDbEntity extends AbstractEntity implements Serializa
     @ManyToOne
     @JoinColumn(name = "USER_ID")
     private UserDbEntity user;
+    
+    @PrePersist
+    @PreUpdate
+    private void checkValues(){
+        if(date == null){
+            date = new Date();
+        }
+        if(passed == null){
+            passed = false;
+        }
+    }
     
     public Date getDate() {
         return date;

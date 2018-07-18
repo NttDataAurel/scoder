@@ -2,6 +2,7 @@ package com.nttdata.practicadevara.scoder.db.user;
 
 import com.nttdata.practicadevara.scoder.db.AbstractBean;
 import com.nttdata.practicadevara.scoder.db.DBException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 
@@ -53,7 +54,60 @@ public class UserDbBean extends AbstractBean<UserDbEntity> {
         entity.setEmail(e.getEmail());
         entity.setFilename(e.getFilename());
         entity.setState(e.getState());
+        mergeUserPhaseResult(entity.getPhaseResults(), e.getPhaseResults());
         return super.update(entity);
     }
 
+    private void mergeUserPhaseResult(List<UserPhaseResultDbEntity> dataInDb, List<UserPhaseResultDbEntity> newData) {
+        if(dataInDb == null) {
+           dataInDb = new ArrayList<>();
+        }
+        if(newData == null) {
+           newData = new ArrayList<>();
+        }
+        List<UserPhaseResultDbEntity> toDelete = new ArrayList<>();
+        List<UserPhaseResultDbEntity> toCreate = new ArrayList<>();
+        List<UserPhaseResultDbEntity> toUpdate = new ArrayList<>();
+        for (UserPhaseResultDbEntity e : dataInDb) {
+            if (find(newData, e.getId()) == null) {
+                toDelete.add(e);
+            } else {
+                toUpdate.add(e);
+            }
+        }
+        for (UserPhaseResultDbEntity e : newData) {
+            if (find(dataInDb, e.getId()) == null) {
+                toCreate.add(e);
+            }
+        }
+        for (UserPhaseResultDbEntity e : toDelete) {
+            dataInDb.remove(e);
+        }
+        for (UserPhaseResultDbEntity e : toUpdate) {
+            copy(e, find(newData, e.getId()));
+        }
+        for (UserPhaseResultDbEntity e : toCreate) {
+            //super.create(e);
+            dataInDb.add(e);
+        }
+    }
+
+    private void copy(UserPhaseResultDbEntity dest, UserPhaseResultDbEntity src) {
+        dest.setComments(src.getComments());
+        dest.setDate(src.getDate());
+        dest.setPassed(src.getPassed());
+        dest.setPhaseId(src.getPhaseId());
+        dest.setRanking(src.getRanking());
+    }
+
+    private UserPhaseResultDbEntity find(List<UserPhaseResultDbEntity> entities, Long id) {
+        if (id != null && entities != null) {
+            for (UserPhaseResultDbEntity e : entities) {
+                if (id.equals(e.getId())) {
+                    return e;
+                }
+            }
+        }
+        return null;
+    }
 }
