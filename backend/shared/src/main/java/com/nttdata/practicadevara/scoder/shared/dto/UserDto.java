@@ -35,7 +35,7 @@ public class UserDto implements Serializable{
     public UserDto() {
     }
 
-    public UserDto(long id, String name, String surname, String address, String phone, String email, String fileName, byte[] fileData, int state) {
+    public UserDto(Long id, String name, String surname, String address, String phone, String email, String fileName, byte[] fileData, int state) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -48,11 +48,11 @@ public class UserDto implements Serializable{
     }
 
 //Setter & getter
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

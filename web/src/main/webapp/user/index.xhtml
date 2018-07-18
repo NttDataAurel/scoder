@@ -72,7 +72,7 @@
                             <h:column>
                                 <f:facet name="header">Date</f:facet>
                                 <h:outputText value="#{userPhaseResult.date}">
-                                    <f:convertDateTime pattern="dd.MM.yyyy" />
+                                    <f:convertDateTime pattern="yyyy.MM.dd" />
                                 </h:outputText>
                             </h:column>
                             <h:column>
@@ -89,6 +89,7 @@
                                 <f:facet name="header">Comments</f:facet>
                                 <h:outputText value="#{userPhaseResult.comments}"/>
                             </h:column>
+                            
                         </h:dataTable>
                     </h:column>
                         
@@ -102,7 +103,7 @@
                             <f:setPropertyActionListener value="#{user}" target="#{userMBean.selectedUser}"/>
                         </h:commandButton>
 						
-                        <h:commandButton value="Add phase result" action="/user/updateUserPhaseResult">
+                        <h:commandButton value="Add phase result" action="#{userMBean.initEditUserPhaseResults}">
                             <f:setPropertyActionListener value="#{user}" target="#{userMBean.selectedUser}"/>
                         </h:commandButton>
                     </h:column>

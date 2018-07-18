@@ -2,32 +2,57 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>User Phase Result</title>
     </h:head>
     <h:body>
-        <h1> User Phase Result</h1>
-        <h:outputText value="update" rendered="#{userPhaseResultMBean.userPhaseResult}"/>
-        
+        <h1> User Phase Result</h1>        
         <br/>
         <f:view>
             <h:form id="UpdateUserPhaseResult">
-                Select Phase :
-               <h:selectOneMenu value="#{UserMBean.selectedPhaseDto}">
-                <f:selectItems value="#{UserMBean.phasesDto}" var="phaseDto" itemValue="#{phaseDto.name}" />
-               </h:selectOneMenu>
+                <ui:repeat value="#{userMBean.selectedUser.phaseResults}" var="phaseResult">
+                    <table class="subtabel">
+                        <tr>
+                            <td><label>Data</label></td>
+                            <td>Phase</td>
+                            <td>Passed</td>
+                            <td>Ranking</td>
+                            <td>Comments</td>
+                        </tr>
+                        <tr valign="top">
+                            <td>
+                                <h:inputText value="#{phaseResult.date}">
+                                    <f:convertDateTime pattern="dd.MM.yyyy" />
+                                </h:inputText>
+                            </td>
+                            
+                            <td><h:selectOneMenu value="#{phaseResult.phaseId}">
+                                    <f:selectItems value="#{userMBean.phasesDto}" var="phaseDto" itemLabel="#{phaseDto.name}" itemValue="#{phaseDto.id}" />
+                                </h:selectOneMenu>
+                            </td>
+                            <td>
+                                <h:inputText value="#{phaseResult.passed}">
+                                    <f:converter converterId="javax.faces.Boolean"/>
+                                </h:inputText>
+                            </td>
+                            <td>
+                                <h:inputText value="#{phaseResult.ranking}"/>
+                            </td>
+                            <td>
+                                <h:inputTextarea value="#{phaseResult.comments}" cols="50" rows="10"/>
+                            </td>
+
+                        </tr>
+                    </table>
+                </ui:repeat>
+
                 <br/>
-                <br/>
-                <h:outputLabel for="comments">Comments :</h:outputLabel> 
-                <br/>
-                <h:inputTextarea rows="20" cols="50">
-                </h:inputTextarea>
-                
-                
-                <br/>
-                    <h:commandButton value="Submit" action="result" />
-                    <h:commandButton value="Reset" type="reset" />
+                <h:commandButton value="Create new phase result" action="#{userMBean.addNewUserPhaseResult}" />
+                <h:commandButton value="Submit" action="#{userMBean.updateUserPhaseResults()}" />
+                <h:commandButton value="Reset" type="reset" />
+                <h:commandButton value="Cancel" action="#{userMBean.toUserIndex}" />
             </h:form>
         </f:view> 
     </h:body>
