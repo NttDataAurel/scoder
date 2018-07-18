@@ -2,6 +2,7 @@ package com.nttdata.practicadevara.scoder.db.user;
 
 import com.nttdata.practicadevara.scoder.db.AbstractBean;
 import com.nttdata.practicadevara.scoder.db.DBException;
+import com.nttdata.practicadevara.scoder.db.phase.PhaseDbEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 
@@ -54,6 +55,12 @@ public class UserDbBean extends AbstractBean<UserDbEntity> {
         entity.setFilename(e.getFilename());
         entity.setState(e.getState());
         return super.update(entity);
+    }
+    public void delete(String name,String address) throws DBException {
+        List<UserDbEntity> entity = filterByNameAndAddress(name,address);
+        if (entity != null) {
+            manager.remove(entity);
+        }
     }
 
 }

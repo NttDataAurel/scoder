@@ -53,6 +53,10 @@ public class UserBean {
         UserDbEntity entity = userDbBean.update(e);
         return toDto(entity);
     }
+    
+    public void delete(Long id) throws DBException {
+        userDbBean.delete(id);
+    }
 
     private List<UserDto> toDto(List<UserDbEntity> list) {
         if (list != null) {

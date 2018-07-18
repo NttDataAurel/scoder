@@ -12,6 +12,8 @@
         <h3>
         User   <h:outputText value="edit" rendered="#{userMBean.isEdit}"/>
                     <h:outputText value="create" rendered="#{userMBean.isCreate}"/>
+                                        <h:outputText value="delete" rendered="#{userMBean.isDelete}"/>
+
         </h3>
         <br/>
         <f:view>
@@ -35,6 +37,8 @@
                 <br/>
                 <h:commandButton value="Edit"   action="#{userMBean.edit}"   rendered="#{userMBean.isEdit}"/>
                 <h:commandButton value="Create" action="#{userMBean.create}" rendered="#{userMBean.isCreate}"/>
+                <h:commandButton value="Delete" action="#{userMBean.delete}" rendered="#{userMBean.isDelete}"/>
+
             </h:form>
         </f:view> 
         <ui:include src="/goBack.xhtml"/>

@@ -21,6 +21,9 @@ public class UserMBean implements Serializable {
 
     private static final String USER_XHTML = "/user/index";
     private static final String USER_EDIT_XHTML = "/user/createOrEditUser";
+    private static final String USER_DELETE_XHTML = "/user/createOrEditUser";
+
+    
 
     @EJB
     private UserRest restClient;
@@ -29,6 +32,8 @@ public class UserMBean implements Serializable {
     private List<UserDto> usersList;
     private boolean isCreate;
     private boolean isEdit;
+        private boolean isDelete;
+
     private PhaseRest phaseRest;
     private List<PhaseDto> phases;
 
@@ -80,14 +85,26 @@ public class UserMBean implements Serializable {
     public String startEdit() {
         isEdit = true;
         isCreate = false;
+        isDelete = false;
+
         return USER_EDIT_XHTML;
     }
 
     public String startCreate() {
         isEdit = false;
         isCreate = true;
+        isDelete = false;
+
         selectedUser = new UserDto();
         return USER_EDIT_XHTML;
+    }
+    
+     public String startDelete() {
+        isEdit = false;
+        isCreate = false;
+        isDelete = true;
+
+        return USER_DELETE_XHTML;
     }
 
     public boolean isIsCreate() {
@@ -97,6 +114,13 @@ public class UserMBean implements Serializable {
     public boolean isIsEdit() {
         return isEdit;
     }
+    
+    public boolean isIsDelete() {
+        return isDelete;
+    }
+    
+    
+    
     
     // value="#{bean.phasesDto}"
     public List<PhaseDto> getPhasesDto() {
@@ -131,9 +155,19 @@ public class UserMBean implements Serializable {
         return USER_XHTML;
     }
 
-    public void delete() {
-        FacesContext.getCurrentInstance().addMessage("appConfigForm", new FacesMessage("Error", "Delete method not yet implemented"));
+    
+        
+        public void delete(){
+        try{
+            restClient.delete(selectedUser);
+        }
+        catch(Exception e){
+      
+            FacesContext.getCurrentInstance().addMessage("userForm", new FacesMessage("Error","Delete method not yet implemented") ); 
+        }
+    }
+       
     }
     
 
-}
+

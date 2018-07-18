@@ -20,6 +20,7 @@ import com.nttdata.practicadevara.scoder.shared.exception.BackendException;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.POST;
 import javax.ws.rs.PathParam;
@@ -58,7 +59,7 @@ public class ServicesUser {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response filterByNameAndAddress(@DefaultValue("") @QueryParam("name") String name,
-            @DefaultValue("") @QueryParam("addr") String address,
+            @DefaultValue("") @QueryParam("address") String address,
             @Context HttpServletRequest servletRequest) {
         List<UserDto> users = userEjb.filterByNameAndAddress(name, address);
         return Response.ok(users).build();
@@ -92,4 +93,13 @@ public class ServicesUser {
             throw new BackendException(ex.getMessage());
         }
     }
+    
+     @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void delete(@DefaultValue("") @QueryParam("id")  Long id) throws DBException {
+        userEjb.delete(id);
+    }
+    
+    
 }
