@@ -31,7 +31,8 @@ public class UserMBean implements Serializable {
     private boolean isEdit;
     private PhaseRest phaseRest;
     private List<PhaseDto> phases;
-
+    private PhaseDto selectedPhaseDto;
+    
     /**
      * Creates a new instance of AppConfigMBean
      */
@@ -106,6 +107,14 @@ public class UserMBean implements Serializable {
         return phases;
     }
 
+    public PhaseDto getSelectedPhaseDto() {
+        return selectedPhaseDto;
+    }
+
+    public void setSelectedPhaseDto(PhaseDto selectedPhaseDto) {
+        this.selectedPhaseDto = selectedPhaseDto;
+    }
+ 
 
     public String edit() {
         try {
