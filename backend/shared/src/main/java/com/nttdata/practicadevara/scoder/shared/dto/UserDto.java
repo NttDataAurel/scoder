@@ -1,18 +1,12 @@
 package com.nttdata.practicadevara.scoder.shared.dto;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.ArrayList;
-
 /**
  *
  * @author bogdan.rebegel
  */
-public class UserDto implements Serializable{
+public class UserDto {
     
-    private static final long serialVersionUID = 1002;
-    
-    private Long id;
+    private long id;
 
     private String name;
 
@@ -30,11 +24,9 @@ public class UserDto implements Serializable{
 
     private int state;
 
-    private List<UserPhaseResultDto> phaseResults = new ArrayList<>();
-
     public UserDto() {
     }
-
+    
     public UserDto(long id, String name, String surname, String address, String phone, String email, String fileName, byte[] fileData, int state) {
         this.id = id;
         this.name = name;
@@ -46,8 +38,9 @@ public class UserDto implements Serializable{
         this.fileData = fileData;
         this.state = state;
     }
-
+ 
 //Setter & getter
+
     public long getId() {
         return id;
     }
@@ -120,11 +113,4 @@ public class UserDto implements Serializable{
         this.state = state;
     }
 
-    public List<UserPhaseResultDto> getPhaseResults() {
-        return phaseResults;
-    }
-
-    public void setPhaseResults(List<UserPhaseResultDto> phaseResults) {
-        this.phaseResults = phaseResults;
-    }
 }

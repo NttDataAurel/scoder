@@ -93,7 +93,7 @@ public class UserPhaseResultDbBean extends AbstractBean<UserPhaseResultDbEntity>
         }
         UserPhaseResultDbEntity entity = findById(e.getId());
         entity.setDate(e.getDate());
-        entity.setUser(e.getUser());
+        entity.setUserId(e.getUserId());
         entity.setPhaseId(e.getPhaseId());
         entity.setComments(e.getComments());
         entity.setRanking(e.getRanking());

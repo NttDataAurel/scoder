@@ -8,18 +8,20 @@ public class UserPhaseResultDto implements Serializable{
     
     private Long id;
     private Date date;
+    private Long userId;
     private Long phaseId;
     private String comments;
     private String ranking;
-    private Boolean passed;
+    private boolean passed;
     
 
     public UserPhaseResultDto() {
     }
 
-    public UserPhaseResultDto(Long id, Date date, Long phaseId, String comments, String ranking, Boolean passed) {
+    public UserPhaseResultDto(Long id, Date date, Long userId, Long phaseId, String comments, String ranking, boolean passed) {
         this.id = id;
         this.date = date;
+        this.userId = userId;
         this.phaseId = phaseId;
         this.comments = comments;
         this.ranking = ranking;
@@ -42,6 +44,14 @@ public class UserPhaseResultDto implements Serializable{
         this.date = date;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+    
     public Long getPhaseId(){
         return phaseId;
     }
@@ -66,11 +76,11 @@ public class UserPhaseResultDto implements Serializable{
         this.ranking = ranking;
     }
     
-    public Boolean getPassed(){
+    public boolean getPassed(){
         return passed;
     }
     
-    public void setPassed(Boolean passed){
+    public void setPassed(boolean passed){
         this.passed = passed;
     }
 

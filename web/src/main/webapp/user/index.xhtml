@@ -62,36 +62,8 @@
                         <h:outputText value="#{user.state}"/>
                     </h:column>
                   
-                    <h:column>
-                        <f:facet name="header">Phases and results</f:facet>
-                        <h:dataTable value="#{user.phaseResults}"  var="userPhaseResult" styleClass="subtabel">
-                            <h:column>
-                                <f:facet name="header">Phase ID</f:facet>
-                                <h:outputText value="#{userPhaseResult.phaseId}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Date</f:facet>
-                                <h:outputText value="#{userPhaseResult.date}">
-                                    <f:convertDateTime pattern="dd.MM.yyyy" />
-                                </h:outputText>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Passed</f:facet>
-                                <h:outputText value="#{userPhaseResult.passed}">
-                                    <f:converter converterId="javax.faces.Boolean"/>
-                                </h:outputText>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Ranking</f:facet>
-                                <h:outputText value="#{userPhaseResult.ranking}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Comments</f:facet>
-                                <h:outputText value="#{userPhaseResult.comments}"/>
-                            </h:column>
-                        </h:dataTable>
-                    </h:column>
-                        
+                    
+                    
                     <h:column>
                         <f:facet name="header">Action</f:facet>
                         <h:commandButton value="Edit" action="#{userMBean.startEdit}">
@@ -101,15 +73,12 @@
                         <h:commandButton value="Delete" action="#{userMBean.delete}">
                             <f:setPropertyActionListener value="#{user}" target="#{userMBean.selectedUser}"/>
                         </h:commandButton>
-						
-                        <h:commandButton value="Add phase result" action="/user/updateUserPhaseResult">
-                            <f:setPropertyActionListener value="#{user}" target="#{userMBean.selectedUser}"/>
-                        </h:commandButton>
                     </h:column>
                     
                </h:dataTable>
              
-               <h:commandButton value="Create new user" action="#{userMBean.startCreate}"/>
+                   
+                <h:commandButton value="Create new user" action="#{userMBean.startCreate}"/>
               
           </h:form>
         </f:view> 

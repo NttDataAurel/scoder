@@ -1,7 +1,5 @@
 package com.nttdata.practicadevara.scoder.front.user;
 
-import com.nttdata.practicadevara.scoder.front.phase.PhaseRest;
-import com.nttdata.practicadevara.scoder.shared.dto.PhaseDto;
 import com.nttdata.practicadevara.scoder.shared.dto.UserDto;
 import com.nttdata.practicadevara.scoder.shared.exception.BackendException;
 import java.io.Serializable;
@@ -15,58 +13,46 @@ import javax.ws.rs.ClientErrorException;
 
 @SessionScoped
 @Named("userMBean")
-public class UserMBean implements Serializable {
-
+public class UserMBean  implements Serializable{
+    
     private static final long serialVersionUID = 10112;
-
+    
     private static final String USER_XHTML = "/user/user";
     private static final String USER_EDIT_XHTML = "/user/CreateOrEditUser";
-
+    
     @EJB
     private UserRest restClient;
     private UserDto selectedUser;
     private String filterText;
-    private List<UserDto> usersList;
+    private List<UserDto> list;
     private boolean isCreate;
     private boolean isEdit;
-    private PhaseRest phaseRest;
-    private List<PhaseDto> phases;
 
     /**
      * Creates a new instance of AppConfigMBean
      */
     public UserMBean() {
     }
-
-    public void initUsers(){
-        usersList = restClient.listUser();
-    }
     
-    public void initPhases(){
-        phases = phaseRest.listPhase();
+ public List<UserDto> getUsers(){
+        List<UserDto> list = restClient.listUser();
+        return list;
     }
-    
-    public List<UserDto> getUsers() {
-        if(usersList == null){
-            initUsers();
-        }
-        return usersList;
-    }
-
-    public String getFilterText() {
+ 
+ public String getFilterText() {
         return filterText;
     }
 
     public void setFilterText(String filterText) {
         this.filterText = filterText;
     }
-
-    public void filter() {
-        usersList = null;
+    
+    public void filter(){
+        list = null;
     }
 
-    public void reload() {
-        usersList = null;
+    public void reload(){
+        list = null;
     }
 
     public UserDto getSelectedUser() {
@@ -76,14 +62,14 @@ public class UserMBean implements Serializable {
     public void setSelectedUser(UserDto selectedUser) {
         this.selectedUser = selectedUser;
     }
-
-    public String startEdit() {
+    
+    public String startEdit(){
         isEdit = true;
         isCreate = false;
         return USER_EDIT_XHTML;
     }
-
-    public String startCreate() {
+    
+    public String startCreate(){
         isEdit = false;
         isCreate = true;
         selectedUser = new UserDto();
@@ -98,32 +84,22 @@ public class UserMBean implements Serializable {
         return isEdit;
     }
     
-    // value="#{bean.phasesDto}"
-    public List<PhaseDto> getPhasesDto() {
-        if(phases == null){
-            initPhases();
-        }
-        return phases;
-    }
-
-
-    public String edit() {
-        try {
+    public String edit(){
+        try{
             restClient.update(selectedUser);
-        } catch (BackendException | ClientErrorException e) {
-            FacesContext.getCurrentInstance().addMessage("userForm", new FacesMessage("Error", e.getMessage()));
+        }catch(BackendException | ClientErrorException e){
+            FacesContext.getCurrentInstance().addMessage("userForm", new FacesMessage("Error",e.getMessage()) );
         }
         selectedUser = null;
         reload();
         isEdit = false;
         return USER_XHTML;
     }
-
-    public String create() {
-        try {
+    public String create(){
+        try{
             restClient.create(selectedUser);
-        } catch (BackendException | ClientErrorException e) {
-            FacesContext.getCurrentInstance().addMessage("userForm", new FacesMessage("Error", e.getMessage()));
+        }catch(BackendException | ClientErrorException e){
+            FacesContext.getCurrentInstance().addMessage("userForm", new FacesMessage("Error",e.getMessage()) );
         }
         selectedUser = null;
         reload();
@@ -131,9 +107,9 @@ public class UserMBean implements Serializable {
         return USER_XHTML;
     }
 
-    public void delete() {
-        FacesContext.getCurrentInstance().addMessage("appConfigForm", new FacesMessage("Error", "Delete method not yet implemented"));
+    public void delete(){
+        FacesContext.getCurrentInstance().addMessage("appConfigForm", new FacesMessage("Error","Delete method not yet implemented") ); 
     }
+   
     
-
 }

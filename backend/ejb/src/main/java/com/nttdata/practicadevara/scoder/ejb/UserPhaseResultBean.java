@@ -15,7 +15,7 @@ import javax.ejb.EJB;
 @Stateless
 @LocalBean
 public class UserPhaseResultBean {
-/* NOT USED ANYMORE
+
     @EJB
     private UserPhaseResultDbBean userPhaseResultDbBean;
 
@@ -90,5 +90,5 @@ public class UserPhaseResultBean {
         e.setPassed(dto.getPassed());
         return e;
     }
-*/
+
 }
