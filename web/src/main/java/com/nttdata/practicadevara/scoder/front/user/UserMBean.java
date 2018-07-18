@@ -123,9 +123,6 @@ public class UserMBean implements Serializable {
         return isDelete;
     }
     
-    
-    
-    
     // value="#{bean.phasesDto}"
     public List<PhaseDto> getPhasesDto() {
         if(phases == null){
