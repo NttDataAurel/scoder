@@ -3,12 +3,18 @@ package com.nttdata.practicadevara.scoder.db.user;
 import com.nttdata.practicadevara.scoder.db.AbstractBean;
 import com.nttdata.practicadevara.scoder.db.AbstractEntity;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.PERSIST;
+import static javax.persistence.CascadeType.REFRESH;
 import javax.persistence.Entity;
 import javax.persistence.Column;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.OneToMany;
 
 @Entity
 @Table(name = UserDbEntity.TBL_USER, schema = AbstractBean.SCHEMA_NAME)
@@ -59,6 +65,9 @@ public class UserDbEntity extends AbstractEntity implements Serializable {
 
     @Column(name = "state")
     private int state;
+    
+    @OneToMany(mappedBy = "user", cascade = {PERSIST, MERGE, REFRESH})
+    private List<UserPhaseResultDbEntity> phaseResults = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -123,6 +132,14 @@ public class UserDbEntity extends AbstractEntity implements Serializable {
 
     public void setState(int state) {
         this.state = state;
+    }
+
+    public List<UserPhaseResultDbEntity> getPhaseResults() {
+        return phaseResults;
+    }
+
+    public void setPhaseResults(List<UserPhaseResultDbEntity> phaseResults) {
+        this.phaseResults = phaseResults;
     }
 
     @Override

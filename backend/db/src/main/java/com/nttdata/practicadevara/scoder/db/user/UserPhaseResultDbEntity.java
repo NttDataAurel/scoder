@@ -8,9 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.Column;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = UserPhaseResultDbEntity.TBL_USER_PHASE_RESULT, schema = AbstractBean.SCHEMA_NAME)
@@ -18,7 +20,7 @@ import javax.persistence.TemporalType;
         @NamedQuery(name = UserPhaseResultDbEntity.FIND_ALL, query = "SELECT e FROM UserPhaseResultDbEntity e"),
         @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_ID, query = "SELECT e FROM UserPhaseResultDbEntity e WHERE e.id=:"+ AbstractBean.ID_PARAM),
         @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_DATE, query ="SELECT e FROM UserPhaseResultDbEntity e WHERE e.date=:"+UserPhaseResultDbEntity.DATE_PARAM),
-        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_USER_ID, query="SELECT e FROM UserPhaseResultDbEntity e WHERE e.userId=:"+UserPhaseResultDbEntity.USER_ID_PARAM),
+        @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_USER_ID, query="SELECT e FROM UserPhaseResultDbEntity e WHERE e.user.id=:"+UserPhaseResultDbEntity.USER_ID_PARAM),
         @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_PHASE_ID, query="SELECT e FROM UserPhaseResultDbEntity e WHERE e.phaseId=:"+UserPhaseResultDbEntity.PHASE_ID_PARAM),
         @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_RANKING, query="SELECT e FROM UserPhaseResultDbEntity e WHERE e.ranking>:"+UserPhaseResultDbEntity.RANKING_PARAM),
         @NamedQuery(name = UserPhaseResultDbEntity.FIND_BY_PASSED, query="SELECT e FROM UserPhaseResultDbEntity e WHERE e.passed=:"+UserPhaseResultDbEntity.PASSED_PARAM),
@@ -50,11 +52,8 @@ public class UserPhaseResultDbEntity extends AbstractEntity implements Serializa
     @Column(name = "_DATE")
     private Date date;
     
-    @Column(name = "USER_ID")
-    private long userId;
-
     @Column(name = "PHASE_ID")
-    private long phaseId;
+    private Long phaseId;
     
     @Column(name = "COMMENTS")
     private String comments;
@@ -63,7 +62,11 @@ public class UserPhaseResultDbEntity extends AbstractEntity implements Serializa
     private String ranking;
     
     @Column(name ="PASSED")
-    private boolean passed;
+    private Boolean passed;
+    
+    @ManyToOne
+    @JoinColumn(name = "USER_ID")
+    private UserDbEntity user;
     
     public Date getDate() {
         return date;
@@ -72,20 +75,12 @@ public class UserPhaseResultDbEntity extends AbstractEntity implements Serializa
     public void setDate(Date date) {
         this.date = date;
     }
-
-    public long getUserId() {
-        return userId;
-    }
     
-    public void setUserId(long user_id) {
-        this.userId = user_id;
-    }
-    
-    public long getPhaseId(){
+    public Long getPhaseId(){
         return phaseId;
     }
     
-    public void setPhaseId(long phase_id){
+    public void setPhaseId(Long phase_id){
         this.phaseId = phase_id;
     }
     
@@ -105,12 +100,20 @@ public class UserPhaseResultDbEntity extends AbstractEntity implements Serializa
         this.ranking = ranking;
     }
     
-    public boolean getPassed(){
+    public Boolean getPassed(){
         return passed;
     }
     
-    public void setPassed(boolean passed){
+    public void setPassed(Boolean passed){
         this.passed = passed;
+    }
+
+    public UserDbEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserDbEntity user) {
+        this.user = user;
     }
     
     @Override

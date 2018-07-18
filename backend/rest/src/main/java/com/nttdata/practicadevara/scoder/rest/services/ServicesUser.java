@@ -34,7 +34,7 @@ import javax.ws.rs.QueryParam;
 public class ServicesUser {
 
     @EJB
-    private UserBean UserEjb;
+    private UserBean userEjb;
 
     @Context
     private UriInfo context;
@@ -49,7 +49,7 @@ public class ServicesUser {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getUserValues() {
-        List<UserDto> Users = UserEjb.list();
+        List<UserDto> Users = userEjb.list();
         return Response.ok(Users).build();
     }
 
@@ -60,7 +60,7 @@ public class ServicesUser {
     public Response filterByNameAndAddress(@DefaultValue("") @QueryParam("name") String name,
             @DefaultValue("") @QueryParam("addr") String address,
             @Context HttpServletRequest servletRequest) {
-        List<UserDto> users = UserEjb.filterByNameAndAddress(name, address);
+        List<UserDto> users = userEjb.filterByNameAndAddress(name, address);
         return Response.ok(users).build();
     }
 
@@ -70,7 +70,7 @@ public class ServicesUser {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getById(@PathParam("id") Long id,
             @Context HttpServletRequest servletRequest) {
-        UserDto User = UserEjb.findById(id);
+        UserDto User = userEjb.findById(id);
         return Response.ok(User).build();
     }
 
@@ -78,7 +78,7 @@ public class ServicesUser {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response newUser(UserDto User) {
-        UserDto res = UserEjb.create(User);
+        UserDto res = userEjb.create(User);
         return Response.ok(res).build();
     }
 
@@ -87,7 +87,7 @@ public class ServicesUser {
     @Consumes(MediaType.APPLICATION_JSON)
     public UserDto updateUser(UserDto User) throws BackendException {
         try {
-            return UserEjb.update(User);
+            return userEjb.update(User);
         } catch (DBException ex) {
             throw new BackendException(ex.getMessage());
         }
