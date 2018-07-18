@@ -3,6 +3,7 @@ package com.nttdata.practicadevara.scoder.db.user;
 import com.nttdata.practicadevara.scoder.db.AbstractBean;
 import com.nttdata.practicadevara.scoder.db.DBException;
 import java.util.ArrayList;
+import com.nttdata.practicadevara.scoder.db.phase.PhaseDbEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 
@@ -56,6 +57,12 @@ public class UserDbBean extends AbstractBean<UserDbEntity> {
         entity.setState(e.getState());
         mergeUserPhaseResult(entity.getPhaseResults(), e.getPhaseResults());
         return super.update(entity);
+    }
+    public void delete(String name,String address) throws DBException {
+        List<UserDbEntity> entity = filterByNameAndAddress(name,address);
+        if (entity != null) {
+            manager.remove(entity);
+        }
     }
 
     private void mergeUserPhaseResult(List<UserPhaseResultDbEntity> dataInDb, List<UserPhaseResultDbEntity> newData) {
