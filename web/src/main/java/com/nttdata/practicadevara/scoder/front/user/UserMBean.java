@@ -19,8 +19,8 @@ public class UserMBean implements Serializable {
 
     private static final long serialVersionUID = 10112;
 
-    private static final String USER_XHTML = "/user/user";
-    private static final String USER_EDIT_XHTML = "/user/CreateOrEditUser";
+    private static final String USER_XHTML = "/user/index";
+    private static final String USER_EDIT_XHTML = "/user/createOrEditUser";
 
     @EJB
     private UserRest restClient;
@@ -126,7 +126,7 @@ public class UserMBean implements Serializable {
         reload();
         isEdit = false;
         return USER_XHTML;
-    }
+    }                                                                                                                                   //<----------------
 
     public String create() {
         try {

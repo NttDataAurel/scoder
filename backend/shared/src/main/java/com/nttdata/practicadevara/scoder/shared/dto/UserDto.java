@@ -121,7 +121,7 @@ public class UserDto implements Serializable{
     }
 
     public List<UserPhaseResultDto> getPhaseResults() {
-        return phaseResults;
+        return phaseResults;                                                        //<----------
     }
 
     public void setPhaseResults(List<UserPhaseResultDto> phaseResults) {

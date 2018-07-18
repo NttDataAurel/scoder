@@ -89,7 +89,7 @@ public class UserBean {
         e.setState(dto.getState());
         if (dto.getPhaseResults() != null) {
             int size = dto.getPhaseResults().size();
-            e.setPhaseResults(new ArrayList<>(size));
+            e.setPhaseResults(new ArrayList<>(size));                                       //<----------
             for (UserPhaseResultDto d : dto.getPhaseResults()) {
                 UserPhaseResultDbEntity ue = fromDto(d, e);
                 e.getPhaseResults().add(ue);
@@ -105,7 +105,7 @@ public class UserBean {
         e.setDate(dto.getDate());
         e.setUser(user);
         e.setPhaseId(dto.getPhaseId());
-        e.setComments(dto.getComments());
+        e.setComments(dto.getComments());                                       //<------------
         e.setRanking(dto.getRanking());
         e.setPassed(dto.getPassed());
         return e;
