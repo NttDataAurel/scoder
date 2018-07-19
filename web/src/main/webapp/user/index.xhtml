@@ -92,18 +92,45 @@
                             
                         </h:dataTable>
                     </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">User Skills</f:facet>
+                        <h:dataTable value="#{user.userSkills}"  var="userSkill" styleClass="subtabel">
+                            <h:column>
+                                <f:facet name="header">Phase ID</f:facet>
+                                <h:outputText value="#{userSkill.phaseId}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Name</f:facet>
+                                <h:outputText value="#{userSkill.name}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Level</f:facet>
+                                <h:outputText value="#{userSkill.level}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Comments</f:facet>
+                                <h:outputText value="#{userSkill.comments}"/>
+                            </h:column>
+                            
+                        </h:dataTable>
+                    </h:column>
                         
                     <h:column>
                         <f:facet name="header">Action</f:facet>
                         <h:commandButton value="Edit" action="#{userMBean.startEdit}">
                             <f:setPropertyActionListener value="#{user}" target="#{userMBean.selectedUser}"/>
                         </h:commandButton>
-                            
-                        <h:commandButton value="Delete" action="#{userMBean.delete}">
+                             
+                      <h:commandButton value="Delete" action="#{userMBean.delete}">
                             <f:setPropertyActionListener value="#{user}" target="#{userMBean.selectedUser}"/>
-                        </h:commandButton>
+                        </h:commandButton>  
 						
                         <h:commandButton value="Add phase result" action="#{userMBean.initEditUserPhaseResults}">
+                            <f:setPropertyActionListener value="#{user}" target="#{userMBean.selectedUser}"/>
+                        </h:commandButton>
+                        
+                        <h:commandButton value="Add user skill" action="#{userMBean.initEditUserSkills}">
                             <f:setPropertyActionListener value="#{user}" target="#{userMBean.selectedUser}"/>
                         </h:commandButton>
                     </h:column>

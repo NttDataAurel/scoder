@@ -5,6 +5,8 @@ import com.nttdata.practicadevara.scoder.db.AbstractEntity;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -14,7 +16,7 @@ import javax.persistence.Table;
 @NamedQueries({
         @NamedQuery(name = UserSkillDbEntity.FIND_ALL, query = "SELECT e FROM UserSkillDbEntity e"),
         @NamedQuery(name = UserSkillDbEntity.FIND_BY_ID, query = "SELECT e FROM UserSkillDbEntity e WHERE e.id=:"+ AbstractBean.ID_PARAM),
-        @NamedQuery(name = UserSkillDbEntity.FILTER_BY_USER_ID, query = "SELECT e FROM UserSkillDbEntity e WHERE e.userId like :"+ UserSkillDbEntity.FILTER_BY_USER_ID_PARAM),
+        @NamedQuery(name = UserSkillDbEntity.FILTER_BY_USER_ID, query = "SELECT e FROM UserSkillDbEntity e WHERE e.user.id like :"+ UserSkillDbEntity.FILTER_BY_USER_ID_PARAM),
         @NamedQuery(name = UserSkillDbEntity.FILTER_BY_PHASE_ID, query = "Select e FROM UserSkillDbEntity e WHERE e.phaseId like :"+ UserSkillDbEntity.FILTER_BY_PHASE_ID_PARAM),
         @NamedQuery(name = UserSkillDbEntity.FILTER_BY_NAME, query = "Select e FROM UserSkillDbEntity e WHERE e.name like :"+ UserSkillDbEntity.FILTER_BY_NAME_PARAM)
 })
@@ -30,9 +32,6 @@ public class UserSkillDbEntity extends AbstractEntity implements Serializable {
     public static final String FILTER_BY_PHASE_ID_PARAM = "phaseId_param";
     public static final String FILTER_BY_NAME = "USER_SKILL_FILTER_BY_NAME";
     public static final String FILTER_BY_NAME_PARAM = "name_param";
-   
-    @Column(name = "USER_ID")
-    private Long userId;
     
     @Column(name = "PHASE_ID")
     private Long phaseId;
@@ -45,14 +44,10 @@ public class UserSkillDbEntity extends AbstractEntity implements Serializable {
     
     @Column(name = "COMMENTS")
     private String comments;
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+    
+    @ManyToOne(optional=false)
+    @JoinColumn(name = "USER_ID")
+    private UserDbEntity user;
 
     public Long getPhaseId() {
         return phaseId;
@@ -84,6 +79,14 @@ public class UserSkillDbEntity extends AbstractEntity implements Serializable {
 
     public void setComments(String comments) {
         this.comments = comments;
+    }
+    
+    public UserDbEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserDbEntity user) {
+        this.user = user;
     }
     
     @Override

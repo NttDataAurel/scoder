@@ -5,8 +5,7 @@ import java.io.Serializable;
 public class UserSkillDto implements Serializable{
     private static final long serialVersionUID = 1537;
     
-    private Long id=null;
-    private Long userId;
+    private Long id;
     private Long phaseId;
     private String name;
     private Long level;
@@ -15,9 +14,8 @@ public class UserSkillDto implements Serializable{
     public UserSkillDto() {
     }
 
-    public UserSkillDto(Long id, Long userId, Long phaseId, String name, Long level, String comments) {
+    public UserSkillDto(Long id, Long phaseId, String name, Long level, String comments) {
         this.id = id;
-        this.userId = userId;
         this.phaseId = phaseId;
         this.name = name;
         this.level = level;
@@ -30,14 +28,6 @@ public class UserSkillDto implements Serializable{
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
     }
 
     public Long getPhaseId() {

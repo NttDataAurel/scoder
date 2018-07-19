@@ -72,7 +72,7 @@ public UserSkillMBean() {
     }
     
     private String popPageComingFromUserSkill(){
-        String userSkillPageId = comingFromViewIdUserSkill != null ? comingFromViewIdUserSkill : USER_SKILL_INDEX_XHTML;
+        String userSkillPageId = comingFromViewIdUserSkill != null ? comingFromViewIdUserSkill : INDEX_XHTML;
         comingFromViewIdUserSkill = null;
         return userSkillPageId;
     }

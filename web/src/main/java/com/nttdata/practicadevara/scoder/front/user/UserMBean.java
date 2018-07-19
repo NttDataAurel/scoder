@@ -4,6 +4,7 @@ import com.nttdata.practicadevara.scoder.front.phase.PhaseRest;
 import com.nttdata.practicadevara.scoder.shared.dto.PhaseDto;
 import com.nttdata.practicadevara.scoder.shared.dto.UserDto;
 import com.nttdata.practicadevara.scoder.shared.dto.UserPhaseResultDto;
+import com.nttdata.practicadevara.scoder.shared.dto.UserSkillDto;
 import com.nttdata.practicadevara.scoder.shared.exception.BackendException;
 import java.io.Serializable;
 import java.util.Date;
@@ -38,7 +39,7 @@ public class UserMBean implements Serializable {
     private List<UserDto> usersList;
     private boolean isCreate;
     private boolean isEdit;
-    private boolean isDelete;
+    //private boolean isDelete;
     private List<PhaseDto> phases;
     
     /**
@@ -89,7 +90,7 @@ public class UserMBean implements Serializable {
     public String startEdit() {
         isEdit = true;
         isCreate = false;
-        isDelete = false;
+       // isDelete = false;
 
         return USER_EDIT_XHTML;
     }
@@ -97,7 +98,7 @@ public class UserMBean implements Serializable {
     public String startCreate() {
         isEdit = false;
         isCreate = true;
-        isDelete = false;
+       // isDelete = false;
 
         selectedUser = new UserDto();
         return USER_EDIT_XHTML;
@@ -106,7 +107,7 @@ public class UserMBean implements Serializable {
      public String startDelete() {
         isEdit = false;
         isCreate = false;
-        isDelete = true;
+       // isDelete = true;
 
         return USER_DELETE_XHTML;
     }
@@ -119,9 +120,9 @@ public class UserMBean implements Serializable {
         return isEdit;
     }
     
-    public boolean isIsDelete() {
-        return isDelete;
-    }
+    //public boolean isIsDelete() {
+    //    return isDelete;
+    //}
     
     // value="#{bean.phasesDto}"
     public List<PhaseDto> getPhasesDto() {
@@ -172,13 +173,26 @@ public class UserMBean implements Serializable {
         return "/user/updateUserPhaseResult";
     }
     
+    public String initEditUserSkills(){
+        return "/user/updateUserSkill";
+    }
+    
     public void addNewUserPhaseResult(){
         UserPhaseResultDto newDto = new UserPhaseResultDto();
         newDto.setDate(new Date());
         selectedUser.getPhaseResults().add(newDto);
-    }    
+    }
+
+    public void addNewUserSkill(){
+        UserSkillDto newDto = new UserSkillDto();
+        selectedUser.getUserSkills().add(newDto);
+    }     
     
     public String updateUserPhaseResults(){
+        return edit();
+    }
+    
+    public String updateUserSkills(){
         return edit();
     }
 

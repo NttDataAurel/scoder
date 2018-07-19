@@ -31,6 +31,8 @@ public class UserDto implements Serializable{
     private int state;
 
     private List<UserPhaseResultDto> phaseResults = new ArrayList<>();
+    
+    private List<UserSkillDto> userSkills = new ArrayList<>();
 
     public UserDto() {
     }
@@ -123,8 +125,16 @@ public class UserDto implements Serializable{
     public List<UserPhaseResultDto> getPhaseResults() {
         return phaseResults;                                                        //<----------
     }
+    
+    public List<UserSkillDto> getUserSkills() {
+        return userSkills;                                                     //<----------
+    }
 
     public void setPhaseResults(List<UserPhaseResultDto> phaseResults) {
         this.phaseResults = phaseResults;
+    }
+    
+    public void setUserSkills(List<UserSkillDto> userSkills) {
+        this.userSkills = userSkills;
     }
 }

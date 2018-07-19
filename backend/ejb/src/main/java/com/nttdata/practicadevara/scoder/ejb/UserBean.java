@@ -8,8 +8,10 @@ import com.nttdata.practicadevara.scoder.db.DBException;
 import com.nttdata.practicadevara.scoder.db.user.UserDbEntity;
 import com.nttdata.practicadevara.scoder.db.user.UserDbBean;
 import com.nttdata.practicadevara.scoder.db.user.UserPhaseResultDbEntity;
+import com.nttdata.practicadevara.scoder.db.user.UserSkillDbEntity;
 import com.nttdata.practicadevara.scoder.shared.dto.UserDto;
 import com.nttdata.practicadevara.scoder.shared.dto.UserPhaseResultDto;
+import com.nttdata.practicadevara.scoder.shared.dto.UserSkillDto;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.stream.Collectors;
@@ -73,12 +75,20 @@ public class UserBean {
                 List<UserPhaseResultDto> dtoList = e.getPhaseResults().stream().map(phaseResult -> toDto(phaseResult)).collect(Collectors.toList());
                 usrDto.setPhaseResults(dtoList);
             }
+            if (e.getUserSkills() != null && !e.getUserSkills().isEmpty()) {
+                List<UserSkillDto> dtoList = e.getUserSkills().stream().map(userSkill -> toDto(userSkill)).collect(Collectors.toList());
+                usrDto.setUserSkills(dtoList);
+            }
         }
         return usrDto;
     }
 
     private UserPhaseResultDto toDto(UserPhaseResultDbEntity e) {
         return new UserPhaseResultDto(e.getId(), e.getDate(), e.getPhaseId(), e.getComments(), e.getRanking(), e.getPassed());
+    }
+    
+    private UserSkillDto toDto(UserSkillDbEntity e) {
+        return new UserSkillDto(e.getId(), e.getPhaseId(), e.getName(), e.getLevel(), e.getComments());
     }
 
     private UserDbEntity fromDto(UserDto dto) {
@@ -99,6 +109,14 @@ public class UserBean {
                 e.getPhaseResults().add(ue);
             }
         }
+        if (dto.getUserSkills() != null) {
+            int size = dto.getUserSkills().size();
+            e.setUserSkills(new ArrayList<>(size));                                       //<----------
+            for (UserSkillDto d : dto.getUserSkills()) {
+                UserSkillDbEntity ue = fromDto(d, e);
+                e.getUserSkills().add(ue);
+            }
+        }
 
         return e;
     }
@@ -112,6 +130,17 @@ public class UserBean {
         e.setComments(dto.getComments());                                       //<------------
         e.setRanking(dto.getRanking());
         e.setPassed(dto.getPassed());
+        return e;
+    }
+    
+    private UserSkillDbEntity fromDto(UserSkillDto dto, UserDbEntity user) {
+        UserSkillDbEntity e = new UserSkillDbEntity();
+        e.setId(dto.getId());
+        e.setUser(user);
+        e.setPhaseId(dto.getPhaseId());
+        e.setName(dto.getName());
+        e.setLevel(dto.getLevel());
+        e.setComments(dto.getComments());                                       //<------------
         return e;
     }
 }

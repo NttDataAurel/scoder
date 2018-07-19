@@ -15,7 +15,7 @@ import javax.ejb.EJB;
 @Stateless
 @LocalBean
 public class UserSkillBean {
-
+/* NOT USED ANYMORE
     @EJB
     private UserSkillDbBean userSkillDbBean;
 
@@ -84,5 +84,5 @@ public class UserSkillBean {
         e.setComments(dto.getComments());
         return e;
     }
-
+*/
 }

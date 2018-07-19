@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>User Skill</title>
+    </h:head>
+    <h:body>
+        <ui:include src="/header.xhtml"/>
+        <h3>UserSkill list</h3>      
+        <br/>
+        <f:view>
+            <h:messages style="color:red;margin:8px;" showDetail="true" />
+            
+            <h:form id="UpdateUserSkill">
+                <ui:repeat value="#{userMBean.selectedUser.userSkills}" var="userSkill">
+                    <table class="subtabel">
+                        <tr>
+                            <td><label>Phase</label></td>
+                            <td>Name</td>
+                            <td>Level</td>
+                            <td>Comments</td>
+                        </tr>
+                        <tr valign="top">
+                          
+                            <td><h:selectOneMenu value="#{userSkill.phaseId}">
+                                    <f:selectItems value="#{userMBean.phasesDto}" var="phaseDto" itemLabel="#{phaseDto.name}" itemValue="#{phaseDto.id}" />
+                                </h:selectOneMenu>
+                            </td>
+                            <td>
+                                <h:inputText value="#{userSkill.name}"/>
+                            </td>
+                            <td>
+                                <h:inputText value="#{userSkill.level}"/>
+                            </td>
+                            <td>
+                                <h:inputTextarea value="#{userSkill.comments}" cols="50" rows="10"/>
+                            </td>
+
+                        </tr>
+                    </table>
+                </ui:repeat>
+
+                <br/>
+                <h:commandButton value="Create new user skill" action="#{userMBean.addNewUserSkill}" />
+                <h:commandButton value="Submit" action="#{userMBean.updateUserSkills()}" />
+                <h:commandButton value="Reset" type="reset" />
+                <h:commandButton value="Cancel" action="#{userMBean.toUserIndex}" />
+            </h:form>
+        </f:view> 
+    </h:body>
+</html>
+

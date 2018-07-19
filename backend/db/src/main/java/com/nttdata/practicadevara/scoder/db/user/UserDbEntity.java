@@ -66,8 +66,11 @@ public class UserDbEntity extends AbstractEntity implements Serializable {
     @Column(name = "state")
     private int state;
     
-    @OneToMany(mappedBy = "user", cascade = {PERSIST, MERGE, REFRESH})                                  //<-------------------
+    @OneToMany(mappedBy = "user", cascade = {PERSIST, MERGE, REFRESH})                               //<-------------------
     private List<UserPhaseResultDbEntity> phaseResults = new ArrayList<>();
+    
+    @OneToMany(mappedBy = "user", cascade = {PERSIST, MERGE, REFRESH})                                  //<-------------------
+    private List<UserSkillDbEntity> userSkills = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -138,8 +141,16 @@ public class UserDbEntity extends AbstractEntity implements Serializable {
         return phaseResults;
     }
 
+    public List<UserSkillDbEntity> getUserSkills() {
+        return userSkills;
+    }
+    
     public void setPhaseResults(List<UserPhaseResultDbEntity> phaseResults) {
         this.phaseResults = phaseResults;
+    }
+    
+    public void setUserSkills(List<UserSkillDbEntity> userSkills) {
+        this.userSkills = userSkills;
     }
 
     @Override

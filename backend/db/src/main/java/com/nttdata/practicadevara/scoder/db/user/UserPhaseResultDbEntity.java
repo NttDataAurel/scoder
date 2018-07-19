@@ -66,7 +66,7 @@ public class UserPhaseResultDbEntity extends AbstractEntity implements Serializa
     @Column(name ="PASSED")
     private Boolean passed;
     
-    @ManyToOne
+    @ManyToOne(optional=false)
     @JoinColumn(name = "USER_ID")
     private UserDbEntity user;
     

@@ -33,16 +33,14 @@ import javax.ws.rs.QueryParam;
 @Stateless
 @LocalBean
 public class ServicesUserSkill {
-
+/* Not Used Anymore
     @EJB 
     private UserSkillBean userSkillEjb;
     
     @Context
     private UriInfo context;
 
-    /**
-     * Creates a new instance of WebServices
-     */
+
     public ServicesUserSkill() {
     }
 
@@ -124,4 +122,5 @@ public class ServicesUserSkill {
     public void deleteUserSkill(@DefaultValue("") @QueryParam("id")  Long id) throws DBException {
         userSkillEjb.deleteUserSkill(id);
     }
+  */
 }

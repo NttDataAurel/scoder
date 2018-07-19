@@ -46,7 +46,7 @@ public class UserSkillDbBean extends AbstractBean<UserSkillDbEntity>{
             throw new DBException("Cannot update entity without id");
         }
         UserSkillDbEntity entity = findById(e.getId());
-        entity.setUserId(e.getUserId());
+        entity.setUser(e.getUser());
         entity.setPhaseId(e.getPhaseId());
         entity.setName(e.getName());
         entity.setLevel(e.getLevel());
