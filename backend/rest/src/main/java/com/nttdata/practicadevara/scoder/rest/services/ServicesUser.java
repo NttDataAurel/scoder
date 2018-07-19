@@ -94,12 +94,20 @@ public class ServicesUser {
         }
     }
     
-     @DELETE
+    @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public void delete(@DefaultValue("") @QueryParam("id")  Long id) throws DBException {
         userEjb.delete(id);
     }
     
+    
+    @DELETE
+    @Path("userskill/delete")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void deleteUserSkill(@DefaultValue("") @QueryParam("id")  Long id) throws DBException {
+        userEjb.deleteUserSkill(id);
+    }
     
 }

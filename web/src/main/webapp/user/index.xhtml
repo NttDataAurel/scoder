@@ -112,6 +112,11 @@
                                 <f:facet name="header">Comments</f:facet>
                                 <h:outputText value="#{userSkill.comments}"/>
                             </h:column>
+                            <h:column>
+                                <h:commandButton value="Delete" action="#{userSkillMBean.deleteUserSkill}">
+                                <f:setPropertyActionListener value="#{userSkill}" target="#{userSkillMBean.selectedUserSkill}"/>
+                                </h:commandButton>
+                            </h:column>
                             
                         </h:dataTable>
                     </h:column>

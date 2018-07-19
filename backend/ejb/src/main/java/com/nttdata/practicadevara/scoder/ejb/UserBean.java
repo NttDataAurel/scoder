@@ -9,6 +9,7 @@ import com.nttdata.practicadevara.scoder.db.user.UserDbEntity;
 import com.nttdata.practicadevara.scoder.db.user.UserDbBean;
 import com.nttdata.practicadevara.scoder.db.user.UserPhaseResultDbEntity;
 import com.nttdata.practicadevara.scoder.db.user.UserSkillDbEntity;
+import com.nttdata.practicadevara.scoder.db.user.UserSkillDbBean;
 import com.nttdata.practicadevara.scoder.shared.dto.UserDto;
 import com.nttdata.practicadevara.scoder.shared.dto.UserPhaseResultDto;
 import com.nttdata.practicadevara.scoder.shared.dto.UserSkillDto;
@@ -23,6 +24,9 @@ public class UserBean {
 
     @EJB
     private UserDbBean userDbBean;
+    
+    @EJB
+    private UserSkillDbBean userSkillDbBean;
 
     public List<UserDto> list() {
         List<UserDbEntity> entities = userDbBean.findAll();
@@ -58,6 +62,10 @@ public class UserBean {
     
     public void delete(Long id) throws DBException {
         userDbBean.delete(id);
+    }
+    
+    public void deleteUserSkill(Long id) throws DBException {
+        userSkillDbBean.delete(id);
     }
 
     private List<UserDto> toDto(List<UserDbEntity> list) {
